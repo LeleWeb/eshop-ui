@@ -1,0 +1,39 @@
+<div style="background-color:#423e3f;;height:47px;position:fixed;width:100%">
+    <span class="am-icon-angle-left am-icon-lg am-fl" style="margin:2px 0 2px 5px;color: #999999;" ng-click = "historyBack()"></span>
+</div>
+<div style="padding-top: 50px">
+    <div class="am-g">
+        <form class="am-form-inline">
+            <input type="text" class="am-form-field search-input" ng-model = "searchString" />
+            <button class="am-btn search-button" ng-click = "searchData()">搜索</button>
+        </form>
+    </div>
+
+    <div class="am-g am-serif search-history" ng-if = "!displayProducetList.length">
+        <p>历史搜索</p>
+
+        <p><span>草莓</span><span>葡萄</span><span>苹果</span><span>红蛇果</span><span>柠檬</span></p>
+    </div>
+
+    <div class="am-g am-serif search-history" ng-if = "!displayProducetList.length">
+        <p>搜索推荐</p>
+
+        <p><span>草莓</span><span>葡萄</span><span>苹果</span><span>红蛇果</span><span>柠檬</span></p>
+    </div>
+    <div>
+   
+    <div class="am-u-sm-12 paym-goodsList">
+        <ul>
+            <li style = "background-color:#fbfbfb" class="am-u-sm-12" ng-repeat = " p in displayProducetList track by $index" ng-click = "stateGoto(p.id)">
+                <div class="paym-goodsImg"><img ng-src="{{serviceAddress + p.pictures['方正'][0].url}}" alt=""/></div>
+                <div class="paym-goodsDetails">
+                    <p>{{p.detail}}{{p.name}}</p>
+                    <p class="paym-goodsValue">￥{{p.real_price}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    </div>
+</div>

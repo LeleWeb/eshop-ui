@@ -1,0 +1,36 @@
+<div  am-show>
+	<div ng-if="is_panic_buyings" class = "xianshi">
+		<h2>正在抢购中</h2> 
+		<span >剩余
+			<span class = "time">{{timeH}}</span>:
+			<span class = "time">{{timeM}}</span>:
+			<span class = "time">{{timeS}}</span>
+		</span>
+	</div>
+	<div ng-if="!is_panic_buyings" class="product-title" >{{title}}</div>
+	<div data-am-widget="list_news" class="am-list-news am-list-news-default product-list" >
+		<!--列表标题-->
+		<div class="am-list-news-bd">
+			<ul class="am-list"  >
+				<!--缩略图在标题左边-->
+				<li ui-sref="detail({ productId: {{p.id}} })" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" ng-repeat = "p in products track by $index" ng-click = "gotoProductDetail(p.id)" >
+					<div class="am-u-sm-4 am-list-thumb">
+						<img ng-src="{{serviceAddress+p.pictures[2][0].document.url}}"/>
+					</div>
+
+					<div class=" am-u-sm-8 am-list-main">
+						<h2 class="am-list-item-hd">{{p.name}}</h2>
+
+						<div class="am-list-item-text">{{p.description}}</div>
+						<div><span class="normal-price">¥{{p.prices[0].real_price}}</span></div>
+
+					</div>
+				</li>
+
+
+			</ul>
+		</div>
+
+	</div>
+</div>
+

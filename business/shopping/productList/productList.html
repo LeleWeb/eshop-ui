@@ -1,0 +1,81 @@
+<div class = "am-animation-fade">
+
+
+    <!-- <div class="am-g proLi-volume"><span class="am-icon-volume-up"></span>请在19:43内提交订单，时间结束后商品可能被抢完。</div> -->
+    
+    <div>
+        <!-- <div ng-if = "true" class="am-g proLi-list"> -->
+        <div ng-if = "users.owner_id" class="am-g proLi-list">
+            <div  class = "pdtfix" >
+                <h1 class="am-serif">购物车</h1>
+            </div>
+            <ul class="product-list">
+                <li  style = "background-color:#fbfbfb" class="am-u-sm-12" ng-repeat = "p in pdtList track by $index" am-counts production = "p">
+                    <div ng-click = "p.changStatus();getAllPrice()"  style = "text-align: right;margin-right: 5%;" >
+					 <span  class = "am-icon-trash-o" ng-click = "deleteProductNumber(p.id)"></span>
+					</div>
+                    
+                    <div ng-click = "p.changStatus();getAllPrice()" class="proLi-selectGoods" >
+                        <input type="checkbox" ng-checked = "p.status == 'done'" />
+                    </div>
+                    <div ng-click = "p.changStatus();getAllPrice()" ng-if="!p.subitems.length" class="proLi-goodsImg"><img ng-src="{{serviceAddress+p.product.pictures[2][0].document.url}}" class="am-img-responsive" alt="图片"/></div>
+                    <div class="proLi-goodsDetails" ng-if="!p.subitems.length">
+                        <div class="proLi-details">{{p.product.detail}}{{p.product.name}}</div>
+                        <div class="proLi-value">
+                            <div ng-click = "p.changStatus();getAllPrice()" class="proLi-goodsValue"><span class="normal-price">￥{{(p.amount*p.price.real_price).toFixed(2)}}</span></div>
+                            <div class="am-btn-group am-btn-group-xs proLi-goodsNum">
+                                <span ng-click = "p.changStatus();getAllPrice()" >数量</span>
+                                <span ng-if = "p.productEdit" ng-click = "p.reduce();getAllPrice()">-</span>
+                                <span>{{p.amount}}{{units[p.price.unit].name}}</span>
+                                <span ng-if = "p.productEdit" ng-click = "p.increase();getAllPrice()">+</span>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div  ng-if="p.subitems.length" class="product-group">
+				
+							<table class="am-table group-buy-table">
+							<tbody>
+								<tr>
+									<td>{{p.product.name}}</td>
+									<td>￥{{p.amount*p.price.real_price}} </td>
+									<td>{{p.amount}} {{units[p.price.unit].name}}</td>
+								</tr>
+								<tr ng-repeat = "plan in p.subitems track by $index">
+								<td>{{plan.product.name}}  </td>
+								<td>￥{{plan.amount*plan.price.real_price}} </td>
+								<td>{{plan.amount}} {{units[plan.price.unit].name}}</td>
+								</tr>
+							
+							</tbody>
+							</table>
+						<span class="normal-price">￥{{p.price.real_price_n}}</span>
+                    </div>					
+                </li>
+
+                <li ng-if ="!pdtList.length" class = "proLi-empty">
+                    <div class="am-text-center"><span class="am-icon-cart-plus am-icon-lg"></span></div>
+                    <div class="am-text-center">您的购物车空空如也</div>
+                    <div class="am-text-center proLi-text14">快去挑点宝贝吧</div>
+                    <div ui-sref = "home" class="am-text-center"><button class="am-btn">去逛逛</button></div>
+                </li>
+            </ul>
+        </div>
+        <div class="am-text-center proLi-noEnter" ng-if = "!users.owner_id">
+            <div>您还未登录，请先登录</div>
+            <button class="am-btn" ng-click = "gotoLogon()">点击登录</button>
+        </div>
+
+    </div>
+</div>
+	<div ng-if = "users.owner_id"  class="am-topbar am-topbar-fixed-bottom" style="bottom: 0px;margin-bottom:0px;z-index: 100000000;">
+		<div class = "am-g">
+			<div ng-click = "isSelALL=!isSelALL;isAllPrice(isSelALL)" class="am-u-sm-6 am-vertical-align" style= "height:50px;margin-bottom: 0px;padding-left: 15px;">
+				<span class="am-vertical-align-middle price-sum"> <input type="checkbox" ng-checked = "isSelALL" />总计 ￥{{allPrice || 0}}</span>
+			</div>
+   
+			<div class="am-u-sm-6 am-vertical-align am-fr" style= "height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
+				<span class="am-vertical-align-middle" ng-click = "changedPage2payment()">去结算</span>
+			</div>
+		</div>
+	</div>	

@@ -1,0 +1,97 @@
+<style type="text/css">
+	.am-avg-sm-2 .share-title{
+		font-size: x-large;
+		padding: 5px;
+		color:white;
+	}
+	.share-codeimg{
+		text-align: right;
+	}
+	.text-center{
+		text-align: center;
+		/*border-top:1px solid lightgrey;*/
+		/*border-bottom:1px solid lightgrey;*/
+	}
+	.size-icon{
+		font-size: 150%;
+	}
+	.top-size{
+		margin: 10px 0 0 0;
+		padding: 10px 0 ;
+		border-bottom: 1px solid lightgrey;
+	}
+</style>
+
+<div>
+	<div style="background-color:#423e3f;height:47px;position:fixed;top:0px;width:100%;z-index: 10">
+        <span class="am-icon-angle-left am-icon-lg am-fl" style="margin:2px 0 2px 5px;color: #999999;" ng-click = "historyBack()"></span>
+    </div>
+
+    <div class="am-u-sm-12 acc-userImg">
+        <img src="lib/images/LOGO.jpg" class="am-img-responsive am-circle" alt="图标">
+    </div>
+
+    <div ng-if= "hasPriority" style = "margin:50px 0  100px 0 ;" >
+
+		<ul class = "am-avg-sm-2" >
+			<li class = "share-title" style= "background-color:#423e3f;font-size: 18px;">推广成绩</li>
+			<li class = "share-title share-codeimg" style= "background-color:#423e3f;font-size: 18px;" ng-click = "displayArcode();displayQrcode = !displayQrcode" >推广二维码 ></li>
+			
+		</ul>
+		<ul class = "am-avg-sm-3 text-center top-size">
+			<li><span class = "am-icon-cny size-icon"></span> &nbsp;奖励<br> {{ commission|| 0.00}} 元</li>
+			<li><span class = "am-icon-bullhorn size-icon"></span> &nbsp;粉丝<br> {{fans}} 人</li>
+			<li><span class = "am-icon-money size-icon"></span> &nbsp;可提现<br> {{usable_commission}} 元</li>
+		</ul>
+		<!-- arcode -->
+	    <div style="text-align:center" ng-if = "displayQrcode">
+		    <div>
+		    	<img ng-src="{{qrcodeUrl}}" class="am-img-responsive" style="width:60%;margin: 10px auto;">
+		    </div>
+	    </div>
+	    <!-- takeMoney -->
+		<ul class = "am-avg-sm-2">
+			<li class = "share-title" style = "font-size: 18px;background-color:#423e3f">提现明细单：	</li>
+			<li class = "share-title" style = "font-size: 18px;text-align:right;background-color:#423e3f" ng-click = "gotoTakeMoney()">提现 >	</li>
+		</ul>
+
+		<table class="am-table am-table-bordered am-table-striped">
+		    <tr>
+	            <td>申请时间</td>
+	            <td>提现金额(元)</td>
+	            <td>申请状态</td>
+	        </tr>
+	        <tr ng-repeat = "item in takeMoneyList track by $index">
+	        	<td>{{convertDate(item.operate_time)}}</td>
+	        	<td>{{item.sum}}</td>
+	        	<td>{{item.status ? "已打款":"申请中"}}</td>
+	        </tr>
+	        <div ng-if = "takeMoneyList.length == 0 ">
+	        	<span>暂无记录</span>
+	        </div>
+		</table>
+    	
+    </div>
+    <!-- modal -->
+    <div am-modal-plug options = "modalObj"></div>
+
+    <div ng-if= "!hasPriority" style="margin-top:50px;" am-show> 
+    	<div style = "text-align:center;"> 
+	    	<span style = "font-size:24px;text-align:center;margin: 0 auto;background-color:lightgrey;">
+	    		<!-- 点击成为<br/>成为分享达人	 -->
+	    		暂无权限
+	    	</span>
+    	</div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

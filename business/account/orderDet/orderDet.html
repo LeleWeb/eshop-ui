@@ -1,0 +1,90 @@
+<div class = "am-animation-slide-right" >
+
+   <div > 
+       <div class="am-g shopDet-success">
+           <div class="am-u-sm-5 am-text-center" ng-if = "orderCurrent.status ==0">{{orderCurrent.status == 0 ?"取消" :""}}</div>
+           <div class="am-u-sm-5 am-text-center" ng-if = "orderCurrent.status ==1">{{orderCurrent.status == 1 ?"待付款":""}}</div>
+           <div class="am-u-sm-5 am-text-center" ng-if = "orderCurrent.status ==2">{{orderCurrent.status == 2 ?"已付款":""}}</div>
+           <div class="am-u-sm-5 am-text-center" ng-if = "orderCurrent.status ==3">{{orderCurrent.status == 3 ?"发货":""}}</div>
+           <div class="am-u-sm-5 am-text-center" ng-if = "orderCurrent.status ==4">{{orderCurrent.status == 4 ?"完成":""}}</div>
+           <div class="am-u-sm-7 am-center"><img src="lib/images/LOGO.png" class="am-img-responsive am-circle" alt=""/></div>
+       </div>
+
+       <div class="shopDet-info">
+           <div class="am-g shopDet-infoState">
+               <div class="am-u-sm-1 shopDet-lineHeight"><span class="am-icon-bus"></span></div>
+               <div class="am-u-sm-10">
+                   <span>{{orderCurrent.consignee_address}}</span>
+				   <span>{{orderCurrent.consignee_name}}</span>
+				   <span>{{orderCurrent.consignee_phone}}</span>
+                   <!-- <span>2016-12-13 20:40:11</span> -->
+               </div>
+              
+           </div>
+       </div>
+
+       <div class="shopDet-goods">
+           <div class="am-g shopDet-seller">舌尖生鲜 &nbsp;<span class="am-icon-angle-right"></span></div>
+           <div class="am-g shopDet-goodsDet" ng-repeat = "pro in orderCurrent.order_details track by $index">
+               <div class="am-u-sm-3" ng-if="!pro.subitems.length">
+                  <img ng-src="{{serviceAddress+pro.product_img}}" class="am-img-responsive" alt=""/></div>
+               <div class="am-u-sm-6 shopDet-intro" ng-if="!pro.subitems.length">
+                   <span>{{pro.product_name}}</span>
+                   <span class="color"> {{pro.product.detail}} </span>
+                   <!-- <span class="exchange">七天退换</span> -->
+               </div>
+               <div class="am-u-sm-2" ng-if="!pro.subitems.length">
+                   <!-- <span class="spanValue">&nbsp;￥30.00</span> -->
+                   <span class="color spanValue pastValue">&nbsp;￥{{pro.product_price}}</span>
+                   <span class="color spanValue">&nbsp;x{{pro.amount}}</span>
+               </div>
+				<div  ng-if="pro.subitems.length">
+
+					<table class="am-table  group-buy-table">
+					<tbody>
+						<tr>
+							<td>{{pro.product.name}}</td>
+							<td>￥{{pro.product_price}} </td>
+							<td>x{{pro.amount}}</td>
+						</tr>
+						<tr ng-repeat = "plan in pro.subitems track by $index">
+						<td>{{plan.product.name}}  </td>
+						<td>￥{{plan.product_price}} </td>
+						<td>x{{plan.amount}}</td>
+						</tr>
+					
+					</tbody>
+					</table>
+				{{p.price.real_price}}
+				</div>	
+               <!--<div class="am-u-sm-12">
+                   <button class="am-btn am-fr">申请售后</button>
+                   <button class="am-btn am-fr">卖了换钱</button>
+               </div>-->
+           </div>
+
+            <div class="am-g shopDet-trueValue">
+               <p class="p2 color1">&nbsp;<span class="am-fr">支付明细</span></p>
+               <p class="p2 color2">实付款 <span class="am-fr">￥{{orderCurrent.total_price}}</span></p>
+           </div>
+           <div class="am-g shopDet-div"></div>
+           <div class="am-g shopDet-connection">
+               <!-- <p class="p2 color1 padAndBor">查看运费险 <span  class="am-icon-angle-right am-icon-sm am-fr"></span></p>
+               <p class="p1 padAndBor">返回积分29点</p> -->
+               <p class="shopDet-button padAndBor">
+                   <button class="am-btn"><span class="am-icon-comment"></span> 联系卖家</button>
+                   <!-- <button class="am-btn"><span class="am-icon-phone"></span> 拨打电话</button> -->
+               </p>
+           </div>
+           <div class="am-g shopDet-div"></div>
+           <div class="am-g shopDet-order">
+               <p class="p1 color1">订单编号：{{orderCurrent.order_number}}<span class="am-fr"></span></p>
+               <!-- <p class="p1 color1">支付宝交易号：20200202020</p> -->
+               <p class="p1 color1">创建时间：{{orderCurrent.created_at|DateFormat}}</p>
+               <p class="p1 color1">付款时间：{{orderCurrent.payment_time|DateFormat}}</p>
+               <!-- <p class="p1 color1">发货时间：2016-12-13 20:41:11</p> -->
+               <!-- <p class="p1 color1">成交时间：2016-12-13 20:41:11</p> -->
+           </div>
+       </div>
+   </div>
+</div>

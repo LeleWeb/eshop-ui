@@ -1,0 +1,59 @@
+<div class = "am-animation-slide-right" >
+    <div style="height:47px;position:fixed;margin-top:-49px;width:100%">
+        
+		<div  class = "pdtfix" >
+			<h1 class="am-serif">订单列表</h1>
+		</div>
+    </div>
+    <div style = "margin-top:49px" class="ord-order">
+        <div style = "background-color:white;margin-top:3px">
+            <ul class = "am-avg-sm-5">
+                <li ng-class = "{'ordOrderfive':orderStatus == 0}" ng-click = "orderStatus = 0">待付款</li>
+                <li ng-class = "{'ordOrderfive':orderStatus == 1}" ng-click = "orderStatus = 1">待发货</li>
+                <li ng-class = "{'ordOrderfive':orderStatus == 2}" ng-click = "orderStatus = 2">待收货</li>
+                <li ng-class = "{'ordOrderfive':orderStatus == 3}" ng-click = "orderStatus = 3">交易成功</li>
+                <li ng-class = "{'ordOrderfive':orderStatus == 4}" ng-click = "orderStatus = 4">所有订单</li>
+            </ul>
+        </div>
+        <div class="ord-ordersMy" style = "margin-bottom:50px;">
+            <!-- start repeat list -->
+            <div class="am-box" ng-repeat = "o in orderList track by $index">
+
+                <div ng-if = "o.status == 1 && orderStatus == 0" ng-include="'framework/template/order.html'">
+                </div>
+               
+                <div ng-if = "o.status == 2 && orderStatus == 1" ng-include="'framework/template/order.html'">
+                </div>
+
+                <div ng-if = "o.status == 3 && orderStatus == 3" ng-include="'framework/template/order.html'">
+                </div>
+
+                
+                <div ng-if = "orderStatus == 4" ng-include="'framework/template/order.html'">
+                </div>
+			</div>				
+            <!-- end repeat list -->
+            <!-- start no records -->
+            <div ng-if = "orderStatus == 0" style = "text-align:center;margin: 20px 0 0 0" >
+                <div ng-bind = " fir ? '': '暂无信息'" style = "font-size:20px">  </div>
+            </div>
+            <div ng-if = "orderStatus == 1" style = "text-align:center;margin: 20px 0 0 0" >
+                <div ng-bind = " sec ? '': '暂无信息'" style = "font-size:20px">  </div>
+            </div>
+            <div ng-if = "orderStatus == 2" style = "text-align:center;margin: 20px 0 0 0" >
+                <div ng-bind = " third ? '': '暂无信息'" style = "font-size:20px">  </div>
+            </div>
+            <div ng-if = "orderStatus == 3" style = "text-align:center;margin: 20px 0 0 0" >
+                <div ng-bind = " fourth ? '': '暂无信息'" style = "font-size:20px">  </div>
+            </div>
+             <div ng-if = "orderStatus == 4" style = "text-align:center;margin: 20px 0 0 0" >
+                <div ng-if = "o.order_details.length == 0 " style = "font-size:20px">暂无信息</div>
+            </div>
+            <!-- end no records -->
+
+
+
+        </div>
+        
+    </div>
+</div>

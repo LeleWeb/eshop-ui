@@ -1,0 +1,36 @@
+<div class = "am-animation-slide-right" >
+    <div class = "am-topbar am-topbar-fixed-top"  style = "background-color:#423e3f" >
+        <span class = "am-icon-angle-left am-icon-lg am-fl" style= "margin: 2px 0 2px 5px;color: #999999;" ng-click = "historyBack()"></span>
+    </div>
+
+    <div class="am-u-sm-12 am-serif" style="margin-top:50px; ">
+        <div class="pwd-userImg">
+            <img src="lib/images/LOGO.jpg" class="am-img-responsive am-circle" alt="图标"/>
+        </div>
+
+        <div class="am-u-sm-12 pwd-userId">
+            <label for="userId" class="am-form-label am-u-sm-3">银行卡号 ：</label>
+            <div class="am-u-sm-9">
+                <input type="text" id="userId" class="am-form-field" ng-model = "bankCards.numbers" placeholder="请输入您的卡号"/>
+            </div>
+        </div>
+
+        <div class="am-u-sm-12 pwd-userId">
+            <label class="am-form-label am-u-sm-3">开户行地址 ：</label>
+            <div class="am-u-sm-9">
+                <input type="text" class="am-form-field" ng-model = "bankCards.address" placeholder="请输入地址"/>
+            </div>
+        </div>
+
+        <div class="am-u-sm-12 pwd-userId">
+            <label class="am-form-label am-u-sm-3">开户姓名 ：</label>
+            <div class="am-u-sm-9">
+                <input type="text" class="am-form-field" ng-model = "bankCards.name" placeholder="请输入姓名"/>
+            </div>
+        </div>
+
+        <button class="am-btn am-btn-lg am-u-sm-12 pwd-enterBtn" style= "color:white;" ng-click = "saveBankCards()">保存银行卡信息</button>
+    </div>
+
+    <!-- <div am-modal-plug options = "modalObj"></div> -->
+</div>

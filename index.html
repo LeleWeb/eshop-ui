@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>生鲜小镇</title>
+	<meta charset = "utf-8">
+	<link rel="stylesheet" href="http://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css">
+	<link rel="stylesheet" href="lib/css/index.css"/>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="green">
+	<meta name="apple-mobile-web-app-title" content="果园">
+	<meta name="author" content="wnagqinag">
+</head>
+<body>
+	<div class = "loading" style = "width:100%;height:100%;position:fixed;text-align: center;top: 40%;">
+		<img src="lib/images/loading.gif">
+	</div>
+	<div class = "am-animation-fade" style="width:100%">
+		<div ui-view></div>
+
+		<!-- 空白填充 -->
+		<div class="am-g">
+			<div class="am-u-sm-12"></div>
+			<div class="am-u-sm-12"></div>
+			<div class="am-u-sm-12"></div>
+		</div>
+
+		<div class = "menu">
+			<ul>
+				<li class= "" ui-sref = "home">
+					<span class="am-icon-home am-icon-sm"></span>首页
+				</li>
+				<li class= "" ui-sref = "productList">
+					<span class="am-icon-cart-plus am-icon-sm"></span>
+					<div ng-if = "shopListNum.num" class="menuGoodsNum" ng-bind = "shopListNum.num"></div>
+					购物车
+				</li>
+				<li class= "" ui-sref = "accounts"><span class="am-icon-user am-icon-sm"></span>个人中心</li>
+			</ul>
+		</div>		
+	</div>
+
+	<!-- goTop -->
+	<div data-am-widget="gotop" class="am-gotop am-gotop-fixed gotop" >
+	    <a href="#top">
+	          <i class="am-gotop-icon-custom am-icon-arrow-circle-o-up"></i>
+	    </a>
+	</div>
+
+</body>
+<script data-main="framework/main"  src="http://cdn.bootcss.com/require.js/2.1.22/require.min.js" defer async="true"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript"></script>
+</html>

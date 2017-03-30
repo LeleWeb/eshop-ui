@@ -1,0 +1,39 @@
+<div class="am-storeCnt am-g" ng-repeat = "detail in o.order_details track by $index" >
+	<div ng-if="!detail.subitems.length" class="proLi-goodsImg"><img ng-src="{{serviceAddress+detail.product_img}}" class="am-img-responsive" alt="图片"/>
+	</div>
+	<div class="proLi-goodsDetails" ng-if="!detail.subitems.length">
+		<div class="proLi-details">{{detail.product.detail}}{{detail.product_name}}</div>
+		<div class="proLi-value">
+			<div class="proLi-goodsValue">￥{{detail.product_price}}</div>
+			<div class="am-btn-group am-btn-group-xs proLi-goodsNum">
+				<span>数量</span>
+				<span>{{detail.amount}}</span>
+			</div>
+		</div>
+	</div>
+	<div  ng-if="detail.subitems.length">
+
+		<table class="am-table group-buy-table">
+		<tbody>
+			<tr>
+				<td>{{detail.product.name}}</td>
+				<td>￥{{detail.product_price}} </td>
+				<td>x{{detail.amount}}</td>
+			</tr>
+			<tr ng-repeat = "plan in detail.subitems track by $index">
+			<td>{{plan.product.name}}  </td>
+			<td>￥{{plan.product_price}} </td>
+			<td>x{{plan.amount}}</td>
+			</tr>
+		
+		</tbody>
+		</table>
+	{{p.price.real_price}}
+	</div>	
+</div>
+
+
+<div class="ord-totalThing ">
+	<span class = "am-btn proLi-toBuyBtn" ng-click = "gotoOrderDet(o)">查看订单状态</span>
+	<span>共{{o.order_details.length}}件商品&nbsp;&nbsp;总计：{{o.total_price}}</span>
+</div>

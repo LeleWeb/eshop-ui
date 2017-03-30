@@ -1,0 +1,48 @@
+<!-- recieve Address -->
+<div>
+	<div>
+		<div class="am-topbar am-topbar-fixed-top am-text-center reAdd-address">
+			<span class="am-fl" ng-click="historyBack()">取消</span>
+			新增收货地址
+			<!-- <span class="am-fr" ng-click="saveUserAddr()">保存</span> -->
+		</div>
+
+		<div class="am-u-sm-12 reAdd-userDetails">
+			<ul class="am-list am-list-static am-list-border" ng-repeat = "address in addresses track by $index">
+			  <li >
+				
+				<div  style = "text-align: right;margin-right: 5%;" >
+					 <span  class = "am-icon-trash-o" ng-click = "deleteAddr(address.id)"></span>
+				</div>
+				<div ng-click ="selectAddr(address)">
+					<i class="am-icon-map-pin am-icon-fw" ></i>
+					{{address.name}} {{address.phone}}
+					{{address.address}}
+				</div>
+				</li>
+			  <li>
+		
+			</ul>
+			<form class="am-form-group">
+				<label for="userName">收货人</label>
+				<input type="text" id="userName"  ng-model="currentuser.name"/>
+			</form>
+			<form class="am-form-group">
+				<label for="userPhon">手机号码</label>
+				<input type="text" id="userPhon" ng-model="currentuser.phone"/>
+			</form>
+
+			<form class="am-form-group">
+				<label for="detailAddress">详细地址</label>
+				<textarea rows="3" id="detailAddress"  ng-model="currentuser.details"></textarea>
+			</form>
+		</div>
+
+		<div class="am-u-sm-12 am-text-center reAdd-prompt">
+			<h3>目前支持配送地点</h3>
+			<p>软件新城及其周边地区</p>
+		</div>
+		<button class="am-btn paym-btn" ng-click="saveUserAddr();">新增地址</button>
+ 	</div>
+</div>
+

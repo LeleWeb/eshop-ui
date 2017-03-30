@@ -1,0 +1,20 @@
+<div class="swiper-container" am-swiper>
+        <div  class="swiper-wrapper">
+            <div  ng-if="p.advert" class="swiper-slide" ng-repeat = "p in picArry track by $index" ng-click = "stateGoto(p.advert.id)">
+                <div class = "wh">
+                    <img  ng-src="{{swiperService+p.advert.pictures[0].document.url}}" class="swiper-lazy">
+                </div>
+            </div>
+			<div ng-if="p.document" ng-if="p.pictures[2]" class="swiper-slide" ng-repeat = "p in picArry track by $index" >
+                <div class = "wh">
+                    <img  ng-src="{{swiperService+p.document.url}}" class="swiper-lazy" style="height:100vw;">
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Navigation -->
+        <!-- <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div> -->
+    </div>
+

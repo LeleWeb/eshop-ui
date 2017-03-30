@@ -1,0 +1,14 @@
+<div  am-show>
+	<div class=" product-title" >{{title}}</div>
+	<div data-am-widget="list_news" class="am-list-news am-list-news-default product-list" >
+	
+		<div class = "am-g" >
+			<div ui-sref="detail({ productId: {{p.id}} })" class="am-u-sm-4 advert_Product borderline" ng-repeat = "p in products track by $index" >
+				<img class="am-img-responsive aligncenter " ng-src="{{serviceAddress+p.pictures[2][0].document.url}}" class="swiper-lazy">
+			 	<dt class="center">{{p.name}}</dt>
+				<dt class="center"><i>¥{{p.prices[0].real_price}}</i></dt>
+			</div>
+		</div>
+	</div>
+</div>
+

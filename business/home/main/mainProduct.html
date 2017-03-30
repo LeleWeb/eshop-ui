@@ -1,0 +1,107 @@
+<div  am-show>
+	<div  class="am-u-sm-12 am-u-md-10 am-u-lg-9 am-u-sm-centered" id="contant">
+        <!-- slider start -->
+        <div am-swiper-plug options = "adverts" style="height: 176px;"></div>
+        <!-- slider end -->
+		<div class="toothbg"></div>
+		<div ng-if="panic_buying_ps.length>0" class = "xianshi">
+			<h2>限时抢购</h2> 
+			<span>剩余
+				<span class = "time">{{timeH}}</span>:
+				<span class = "time">{{timeM}}</span>:
+				<span class = "time">{{timeS}}</span>
+			</span>
+		</div>
+		<div ng-if="panic_buying_ps.length>0" class="am-u-sm-12 miaosha"  ui-sref="list">
+			<div class="am-u-sm-3" ng-repeat = "p in panic_buying_ps track by $index">
+				<img ng-src="{{serviceAddress+p.pictures[2][0].document.url}}" >
+				<center>{{p.name}}</center>
+				<span class = "timemoney">￥{{p.prices[0].real_price}}</span><span >/500g</span>
+				
+			</div>
+			
+		</div>		
+		<div ng-if="panic_buying_ps.length>0" class="am-u-sm-12 ">
+			<div ng-if="panic_buying_ps.length>0" class="toothbg"></div>
+		</div>
+		
+		<div class="am-u-sm-12 main-menu">
+			<div class="am-u-sm-3 " ui-sref="table({ type:'category',value:'1' })">
+				<img ng-src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/jpsg.png"
+					 src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/jpsg.png">
+			</div>
+			<div class="am-u-sm-3" ui-sref="list({ type:'category',value:'2' })">
+				<img ng-src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/blgq.png"
+					 src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/blgq.png">
+			</div>
+			<div class="am-u-sm-3" ui-sref="detail({ productId: team_setmealid })" >
+				<img ng-src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/zntj.png"
+					 src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/zntj.png">
+			</div>
+			<div class="am-u-sm-3" ui-sref="list({ type:'property',value:'3' })">
+				<img ng-src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/tg.png"
+					 src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/tg.png">
+			</div>
+		</div>
+
+		<div class="tcWrap">
+			<div class=" product-title" id="{{panic_buying_ps.length>0?'products_1':'products_2'}}">热门选购</div>
+			<div data-am-widget="list_news" class="am-list-news am-list-news-default product-list" >
+				<div ng-repeat = "p in products_1 track by $index">
+					<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+
+					<figure data-am-widget="figure" class="am am-figure am-figure-default "   data-am-figure="{  pureview: 'true' }">
+						<img ng-src="{{serviceAddress+p.advert.pictures[0].document.url}}"  alt="春天的花开秋天的风以及冬天的落阳"/>
+						<figcaption class="am-figure-capition-btm">
+							{{p.advert.description}}
+						</figcaption>
+					</figure>
+
+					<!-- 广告商品列表 -->
+					<div class="am-list-news-bd">
+						<ul class="am-list"  >
+							<!--缩略图在标题左边-->
+							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" ng-repeat = "product in p.advert.products track by $index" ng-click = "gotoProductDetail(product.id)" >
+								<div class="am-u-sm-4 am-list-thumb">
+									<img ng-src="{{serviceAddress+product.pictures[2][0].document.url}}"/>
+								</div>
+
+								<div class=" am-u-sm-8 am-list-main">
+									<h2 class="am-list-item-hd">{{product.name}}</h2>
+
+									<div class="am-list-item-text">{{product.description}}</div>
+									<div><span class="normal-price">¥{{product.prices[0].real_price}}</span></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer data-am-widget="footer" class="am-footer am-footer-default" data-am-footer="{  }">
+			<div class="am-footer-miscs ">
+				<p>由 <a href="http://www.yunshipei.com/" title="诺亚方舟"
+						target="_blank" class="">当夏网络</a>
+					提供技术支持</p>
+				<p>©2017 dangxiaweb.com Inc. All rights reserved.</p>
+				<p>陕ICP备17004759号</p>
+			</div>
+		</footer>
+
+		<!--<div class="foot">-->
+		  <!--<div class="link" style="margin:0px auto 30px">-->
+			<!--<a href="/">首页</a>-->
+			<!--<a href="/my">会员中心</a>-->
+			<!--<a href="/wx_cs/serverce_index">常见问题</a>-->
+		  <!--</div>-->
+		  <!--&lt;!&ndash; <div>-->
+			<!--<img src="http://static2.flowerplus.cn/Static/web/v1/Images/mob5.png" style="height:24px;width:89px;display:inline-block;">-->
+		  <!--</div> &ndash;&gt;-->
+		  <!--<p class="copy">© 2016 西安连线网络科技有限公司<br>沪ICP备13016979号</p>-->
+		<!--</div>-->
+    </div>
+    
+</div>
+<!--内容区域结束-->
+<!-- <div ui-view></div> -->

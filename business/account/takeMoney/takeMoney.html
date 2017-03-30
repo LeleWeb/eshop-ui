@@ -1,0 +1,85 @@
+<style type="text/css">
+	.text-center{
+		text-align: center;
+	}
+	.text-right{
+		text-align: right;
+	}
+	.money input {
+		border:1px solid lightgrey;
+	}
+	.margin-top {
+		margin: 20px 0 0 0 ;
+	}
+</style>
+
+
+<div>
+	<div style="background-color:#423e3f;height:47px;position:fixed;top:0px;width:100%">
+        <span class="am-icon-angle-left am-icon-lg am-fl" style="margin:2px 0 2px 5px;color: #999999;" ng-click = "historyBack()"></span>
+    </div>
+
+    <div class="am-u-sm-12 acc-userImg" style = "margin-top:50px;">
+        <img src="lib/images/LOGO.jpg" class="am-img-responsive am-circle" alt="图标">
+    </div>
+
+    <!-- <div class= "am-u-sm-12 text-center margin-top">
+    	<div class = "am-u-sm-5 text-right">
+    		<label>可提现金额 ：</label> 
+    		
+    	</div>
+    	<div class = "am-u-sm-7">
+	    	<span>{{money}} </span>
+    	</div>
+	    	
+    </div>
+    <div class= "am-u-sm-12 text-center margin-top">
+    	<div class = "am-u-sm-5 text-right">
+    		<label>提现 ：</label> 
+    		
+    	</div>
+    	<div class = "am-u-sm-7 money">
+	    	<span><input type="text" ng-model = "takeMoney"></span>
+    	</div>
+	    	
+    </div> -->
+
+    	<div class="am-u-sm-12 pwd-userId">
+            <label for="userId" class="am-form-label am-u-sm-3">提现额度：</label>
+            <div class="am-u-sm-9">
+                <input type="text" id="userId" class="" ng-model = "takeMoney" readonly="readonly" />
+            </div>
+        </div>
+
+        <div class="am-u-sm-12 pwd-userId">
+            <label class="am-form-label am-u-sm-3">提现：</label>
+            <div class="am-u-sm-9">
+                <input type="text" class="am-form-field" ng-model = "bankCards.take" placeholder="提现金额(元)"/>
+            </div>
+        </div>
+
+        <div class="am-u-sm-12 pwd-userId">
+            <label class="am-form-label am-u-sm-3">当前卡号：</label>
+            <div class="am-u-sm-9">
+                <input type="text" ng-model = "bankCards.address" readonly="readonly" placeholder="当前卡号"/>
+            </div>
+        </div>
+
+         <div class="am-u-sm-12 pwd-userId text-center" ng-click = "addBankCards()">
+            <label class="am-form-label am-u-sm-12">添加或修改当前银行卡信息 ></label>
+         </div>
+
+
+
+
+
+<!--     <div ng-if= "!hadBankCards" class= "am-u-sm-12 text-center margin-top" ng-click = "addBankCards()">
+    	请先添加提现银行卡信息 >
+    </div>
+ -->    <!-- <div ng-if= "!hadBankCards" class= "am-u-sm-12 text-center margin-top">
+    	
+    </div>
+ -->
+    <button class="am-btn paym-btn margin-top" ng-click="takeOffMoney()">提交申请</button>
+	
+</div>

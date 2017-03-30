@@ -1,0 +1,180 @@
+<div class = "">
+	<div class = "am-animation-slide-right" >
+		<div>
+		<!--图片轮播-->
+		<div ng-show="productDetails.category_id!==3" am-swiper-plug options = "slideFruitData" type = "typeName"> </div>
+		<!--名称及价钱详细介绍-->
+		<div ng-show="productDetails.category_id!==3" class="am-u-sm-12 det-details">
+			<div class="am-u-sm-10">{{productDetails.description}} {{productDetails.detail}}</div>
+			<!--长度不变 在跳跃-->
+			<div ng-show="productDetails.category_id!==3" class="am-u-sm-12 det-value"> {{price_select.real_price}}元/{{units[price_select.unit].name}}
+				<span class="det-lastname"> 市场价：</span>
+				<span class="det-lastValue"> {{price_select.price}}元/{{units[price_select.unit].name}}</span>
+			</div>
+			
+		</div>
+		<div ng-show="productDetails.property===3" class="am-u-sm-12 ">
+			<div class="am-u-sm-4 am-vertical-align am-circle circle yg" >
+				<span class="am-vertical-align-middle">{{productDetails.group_buying.current_number}}</span>
+			</div>
+			<div class="am-u-sm-4 am-vertical-align am-circle circle wcl" >
+				<span class="am-vertical-align-middle" >{{productDetails.group_buying.current_number}}%</span>
+			</div>
+			<div class="am-u-sm-4 am-vertical-align am-circle circle sysj" >
+				<span class="am-vertical-align-middle" >{{productDetails.group_buying.end_day}}天</span>
+			</div>			
+		</div>
+		<div ng-show="productDetails.property===3" class="am-u-sm-12 ">
+			<div class="am-u-sm-4 am-vertical-align center" >
+				<span class="am-vertical-align-middle ">已购人数</span>
+			</div>
+			<div class="am-u-sm-4 am-vertical-align center" >
+				<span class="am-vertical-align-middle" >完成率</span>
+			</div>
+			<div class="am-u-sm-4 am-vertical-align center" >
+				<span class="am-vertical-align-middle" >剩余时间</span>
+			</div>			
+		</div>
+		<div ng-show="productDetails.property===3"  class="am-u-sm-12 det-value">
+			<ul class="sku">
+				<li ng-show="productDetails.category_id===1">
+					<dl>
+						<dt style="font-size:12px;color:#333;padding-bottom:5px">
+						目标数量:<a style="color:#f6325b;margin-left:15px;">{{productDetails.group_buying.target_amount}}斤</a>
+						
+						已购:<a style="color:#f6325b;margin-left:15px;">{{productDetails.group_buying.current_amount}}斤</a>
+						</dt>
+						
+					</dl>
+				</li>
+			</ul>
+		</div>
+		<div ng-show="productDetails.category_id!==3"  class="am-u-sm-12 det-value">
+			<ul class="sku">
+				<li ng-show="productDetails.category_id===1">
+					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">订购方式:<a style="color:#f6325b;margin-left:15px;"></a></dt>
+					<dd class="sku-item" >
+						<span data-key="0" ng-repeat="price in productDetails.prices track by $index" class="select {{price_select.id==price.id?'ed':''}}" ng-click="selectPrice(price)">按{{units[price.unit].name}}数</span>
+					 
+					</dd>
+					</dl>
+				</li>
+				<li >
+					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">订购数量:<a style="color:#f6325b;margin-left:15px;"></a></dt>
+					<dd class="sku-item"  >
+							<div class="am-btn-group am-btn-group-xs proLi-goodsNum" style="float: left; */">
+						 
+							<span  class="numselect" ng-click = "reduce()">-</span>
+							<span class="numselect">{{productDetails.number}}</span>
+							<span>{{units[price_select.unit].name}}</span>
+							<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>
+							<span class="numselect" ng-click = "increase()">+</span>
+							</div>
+					</dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+		<div ng-show="productDetails.category_id===3" class="am-u-sm-12 det-value teaminput">
+			<ul class="sku group-buy" >
+				<li><p class="am-serif">输入总金额，总人数，点击自助推荐。</p></li>
+				<li style="font-size:12px;color:#333;padding-bottom:5px">
+				<span>总金额：</span><input type="number"   ng-model="productDetails.money" ><span class="unit">￥</span>
+				</li>
+				<li style="font-size:12px;color:#333;padding-bottom:5px">
+				<span>总人数：</span><input type="number"   ng-model="productDetails.number" ><span class="unit">人</span>
+				</li>
+
+			</ul>
+			<span class="btn-recommend" ng-click="computes()">自助推荐<br><i class="am-icon-sort-desc am-icon-fw"></i> </span>
+			
+		</div>	
+<form>
+			<div  class="am-u-sm-12 det-value ">
+				<ul class="sku" >
+					<li class="teamset" ng-repeat = "plan in productDetails.plans track by $index"   style="font-size:12px;color:#333;padding-bottom:5px">
+							<div class="proLi-selectGoods" ng-click = "changStatus(plan,$index)">
+								<input type="radio"  ng-checked = "plan.checked "/>
+							</div>
+
+							<ul>
+								<li ng-repeat = "p in plan.plans track by $index" >
+									<div class="am-u-sm-12 det-value "> {{p.product}}
+										<span > ￥{{p.total_price}}</span>
+										<span> {{p.amount}}</span>
+									</div>
+								</li>
+							</ul>
+						￥{{plan.sum_price		}}
+					</li>
+
+				</ul>
+			</div>
+
+	<!-- 重新写这部分样式 2017.3.28 -->
+	<!--<div class="borderline" ng-repeat = "plan in productDetails.plans track by $index">-->
+		<!--<div class="am-g" ng-repeat = "p in plan.plans track by $index">-->
+			<!--<div class="am-u-sm-8 ">-->
+				<!--<span >{{p.product}}</span>-->
+			<!--</div>-->
+			<!--<div class="am-u-sm-4 ">-->
+				<!--<span > ￥{{p.total_price}}</span>-->
+				<!--<span> {{p.amount}}</span>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+</form>
+
+		<!--<div class="am-cf"></div>-->
+
+		<!--商品详情-->
+		<div ng-show="productDetails.category_id != 3">
+			<div>
+				<div class="am-u-sm-12 am-vertical-align" style= "height:46px;background-color:#aaaaaa;text-align:center">
+					<span class="am-vertical-align-middle" >商品详情</span>
+				</div>
+
+			</div>
+
+			<div class="am-u-sm-12 det-productIntro">
+				<ul>
+					<li ng-if = "productDetails.pictures[3].length" class="am-u-sm-12 am-u-md-12 am-u-lg-12" ng-repeat="p in productDetails.pictures[3] track by $index">
+						<a><img ng-src="{{serviceAddress+p.document.url}}" alt="" class="am-img-responsive"/></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	</div>
+	
+	<div ng-if = "users.owner_id"  class="am-topbar am-topbar-fixed-bottom" style="bottom: 0px;margin-bottom:0px;z-index: 100000000;">
+		<div class = "am-g">
+			<div ui-sref = "home" class="am-u-sm-2 am-vertical-align" style= "height:50px;margin-bottom: 0px;text-align:center;background-color:white;">
+				  <span class="am-vertical-align-middle"style="color: black;">
+				  <span class="am-icon-angle-left am-icon-md "></span>
+				  </span>
+			</div>
+			<div ui-sref = "productList" class="am-u-sm-2 am-vertical-align" style= "height:50px;margin-bottom: 0px;text-align:center;background-color:white;">
+				<span class="am-icon-cart-plus am-icon-md"></span>
+				<span class="am-vertical-align-middle ">购物车</span>
+				<div  ng-show="shopListNum.num>0" class="menuGoodsNum" style="left: 63%;bottom: 60%;" ng-bind = "shopListNum.num"></div>
+				
+			</div>
+			<div class="am-u-sm-4 am-vertical-align" style= "height:50px;margin-bottom: 0px;background-color:#FF9500;color:white;text-align:center">
+				<span class="am-vertical-align-middle "ng-click = "addToBag()">加入购物车</span>
+			</div>
+
+			<div class="am-u-sm-4 am-vertical-align am-fr" style= "height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
+				<span class="am-vertical-align-middle" ng-click = "gotoShopList()">立即购买</span>
+			</div>
+		</div>
+	</div>
+
+
+    <div am-modal-plug options = "modalObj"></div>
+    <div am-modal-plug options = "modalObjSuc"></div>
+    <div am-modal-plug options = "modalObjErr"></div>
+	<div am-modal-plug options = "modalObjErrComp"></div>
+</div>
