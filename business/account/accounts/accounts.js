@@ -1,5 +1,7 @@
-define(["amaze"],function (){
-	var ctrl = ["$scope","$http","$state",function($scope,$http,$state){
+define(["amaze","framework/services/accountService"],function (amaze,accountService){
+	var ctrl = ["$rootScope","$scope","$http","$state","$q",function($rootScope,$scope,$http,$state,$q){
+		var accountIns = new accountService($q);
+
 		$scope.changedPage2logon = function(){
 			$state.go("logon");
 		}
@@ -19,8 +21,17 @@ define(["amaze"],function (){
 		$scope.toCoupon=function(){
 			$state.go("coupon");
 		}
-		
 
-	}];
+		function init(){
+			accountIns.getUserDetails($rootScope.users.account_id).then(function(data){
+				$rootScope.customer = data.data.customer;
+			},function(err){
+				console.log(err);
+			});
+		}
+
+		init();
+
+		}];
 	return ctrl;
 });
