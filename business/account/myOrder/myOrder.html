@@ -1,7 +1,31 @@
+<div class="list-index">
+<!--&lt;!&ndash;header start&ndash;&gt;-->
+<!--<header data-am-widget="header"-->
+        <!--class="am-header am-header-default">-->
+    <!--<div class="am-header-left am-header-nav">-->
+        <!--<a class="" onclick='javascript:history.go(-1)'>-->
+            <!--<i class="am-header-icon am-icon-chevron-left"></i>-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <!--<h1 class="am-header-title">-->
+        <!--<a href="#" class="">-->
+            <!--我的订单-->
+        <!--</a>-->
+    <!--</h1>-->
+
+    <!--<div class="am-header-right am-header-nav">-->
+        <!--<a href="list-info.html" class="">-->
+            <!--<i class="am-header-icon am-icon-bars"></i>-->
+        <!--</a>-->
+    <!--</div>-->
+<!--</header>-->
+<!--&lt;!&ndash;header start&ndash;&gt;-->
+
+<div class="body">
 <div class = "am-animation-slide-right" >
     <div style="height:47px;position:fixed;margin-top:-49px;width:100%">
-        
-		<div  class = "pdtfix" >
+		<div class = "pdtfix">
 			<h1 class="am-serif">订单列表</h1>
 		</div>
     </div>
@@ -16,23 +40,25 @@
             </ul>
         </div>
         <div class="ord-ordersMy" style = "margin-bottom:50px;">
-            <!-- start repeat list -->
-            <div class="am-box" ng-repeat = "o in orderList track by $index">
+            <ul>
+                <!-- start repeat list -->
+                <div class="am-box" ng-repeat = "o in orderList track by $index">
 
-                <div ng-if = "o.status == 1 && orderStatus == 0" ng-include="'framework/template/order.html'">
-                </div>
-               
-                <div ng-if = "o.status == 2 && orderStatus == 1" ng-include="'framework/template/order.html'">
-                </div>
+                    <div ng-if = "o.status == 1 && orderStatus == 0" ng-include="'framework/template/order.html'">
+                    </div>
 
-                <div ng-if = "o.status == 3 && orderStatus == 3" ng-include="'framework/template/order.html'">
-                </div>
+                    <div ng-if = "o.status == 2 && orderStatus == 1" ng-include="'framework/template/order.html'">
+                    </div>
 
-                
-                <div ng-if = "orderStatus == 4" ng-include="'framework/template/order.html'">
+                    <div ng-if = "o.status == 3 && orderStatus == 3" ng-include="'framework/template/order.html'">
+                    </div>
+
+                    <div ng-if = "orderStatus == 4" ng-include="'framework/template/order.html'">
+                    </div>
                 </div>
-			</div>				
-            <!-- end repeat list -->
+                <!-- end repeat list -->
+            </ul>
+
             <!-- start no records -->
             <div ng-if = "orderStatus == 0" style = "text-align:center;margin: 20px 0 0 0" >
                 <div ng-bind = " fir ? '': '暂无信息'" style = "font-size:20px">  </div>
@@ -50,10 +76,9 @@
                 <div ng-if = "o.order_details.length == 0 " style = "font-size:20px">暂无信息</div>
             </div>
             <!-- end no records -->
-
-
-
         </div>
-        
+
     </div>
+</div>
+</div>
 </div>

@@ -1,0 +1,271 @@
+ul,
+li {
+  list-style: none;
+}
+ul {
+  margin: 0 0 0 0 !important;
+  padding-left: 0em !important;
+}
+.mr-5 {
+  margin-right: 5px;
+}
+.list-index {
+  background-color: #e2e2e2;
+}
+.list-index .body > ul > li {
+  margin: 20px 0 0 0 !important;
+  background-color: #fff;
+  min-height: 10px;
+  overflow: hidden;
+}
+.list-index .body > ul > li:first-child {
+  margin: 0 0 0 0 !important;
+}
+.list-index .body .n .qx {
+  color: #333 ;
+}
+.list-index .body .n .wc {
+  color: #ff4400;
+}
+.list-index .body .n .am-list-news-default {
+  margin: 0px 10px;
+}
+.list-index .body .n .list {
+  background-color: #e8e8e8;
+  padding: 10px 0px;
+}
+.list-index .body .n .list .xq {
+  margin-top: 2px;
+}
+.list-index .body .n .list .xq p {
+  margin: 0 0!important;
+  font-size: 14px;
+}
+.list-index .body .n .money {
+  background-color: #fff;
+  margin: 10px 0px;
+}
+.list-index .body .n .money .moneyCount {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.list-index .body .n .am-divider {
+  margin: 0.5rem auto;
+}
+.list-index .body .n .zaici .gm {
+  border: 1px solid #ff0000;
+  border-radius: 3px;
+  color: #ff0000;
+  padding: 5px 10px;
+  margin: 0px 0px 7px 0px;
+}
+.list-info {
+  background-color: #e2e2e2;
+}
+.list-info .body .ddh {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #cccccc;
+  background-color: #fff;
+}
+.list-info .body .ddh .qx {
+  color: #ff0000;
+}
+.list-info .body .tkjd {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #cccccc;
+  background-color: #fff;
+}
+.list-info .body .tkjd .jd {
+  color: #ff0000;
+}
+.list-info .body .shdz {
+  background-color: #fff;
+  margin: 10px 0px;
+  padding: 10px 1rem;
+}
+.list-info .body .shdz .phone {
+  margin-left: 30px;
+}
+.list-info .body .shdz .xxdz {
+  padding-left: 1.5rem;
+  padding-right: 0;
+  color: #717171;
+}
+.list-info .body .shdz .xxdz p {
+  font-size: 12px;
+  margin: 0;
+}
+.list-info .body .dd {
+  background-color: #fff;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.list-info .body .dd > li {
+  margin-bottom: 3px;
+}
+.list-info .body .dd .n {
+  min-height: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 3px;
+}
+.list-info .body .dd .n .qx {
+  color: #333 ;
+}
+.list-info .body .dd .n .wc {
+  color: #ff4400;
+}
+.list-info .body .dd .n .am-list-news-default {
+  margin: 0px 10px;
+}
+.list-info .body .dd .n .list {
+  padding: 10px 0px 0px;
+}
+.list-info .body .dd .n .list > ul {
+  padding-right: 0px;
+}
+.list-info .body .dd .n .list > ul > li {
+  padding: 10px 0 !important;
+  margin-bottom: 7px;
+  background-color: #e8e8e8;
+}
+.list-info .body .dd .n .list .xq .title {
+  margin: 0 0!important;
+  font-size: 14px;
+}
+.list-info .body .dd .n .list .xq .xh {
+  margin: 0 0!important;
+  font-size: 12px;
+  color: #a5a5a5;
+}
+.list-info .body .dd .n .list .jg {
+  padding-right: 0;
+}
+.list-info .body .dd .n .list .jg p {
+  float: right;
+  margin: 0 0!important;
+  font-size: 14px;
+}
+.list-info .body .dd .n .list .jg .cancel {
+  margin-top: 25px;
+  float: right;
+  padding: 3px 6px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  color: #ff0000;
+  background-color: #f7f7f7;
+}
+.list-info .body .dd .n .money {
+  background-color: #fff;
+  margin: 10px 0px;
+}
+.list-info .body .dd .n .money .moneyCount {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 22px;
+}
+.list-info .body .dd .n .am-divider {
+  margin: 0.5rem auto;
+}
+.list-info .body .dd .n .zaici .gm {
+  border: 1px solid #ff0000;
+  border-radius: 3px;
+  color: #ff0000;
+  padding: 5px 10px;
+  margin: 0px 0px 7px 0px;
+}
+.list-info .body .zf {
+  color: #757575;
+  margin: 10px 0px;
+  background-color: #fff;
+  font-size: 14px;
+}
+.list-info .body .zf .zffs {
+  height: 40px;
+  line-height: 40px;
+}
+.list-info .body .zf .zffs .xx {
+  color: #333;
+}
+.list-info .body .zf .psxx p {
+  font-size: 14px;
+  margin: 0 0;
+}
+.list-info .body .zf .psxx span {
+  font-size: 14px;
+}
+.list-info .body .zf .fp {
+  height: 40px;
+  line-height: 40px;
+}
+.list-info .body .zf .fp .xx {
+  color: #333;
+}
+.list-info .body .zf .psxn {
+  padding-bottom: 10px;
+}
+.list-info .body .sp {
+  color: #757575;
+  background-color: #fff;
+  font-size: 14px;
+  border-bottom: 1px solid #cccccc;
+}
+.list-info .body .sp .spze {
+  height: 40px;
+  line-height: 40px;
+}
+.list-info .body .sp .spze .xx {
+  color: #ff0000;
+}
+.list-info .body .sp .yf {
+  height: 40px;
+  line-height: 20px;
+}
+.list-info .body .sp .yf .xx {
+  color: #ff0000;
+}
+.list-info .body .sp .sfk {
+  height: 60px;
+  line-height: 50px;
+}
+.list-info .body .sp .sfk .mon {
+  width: 100%;
+  min-height: 1px;
+  overflow: hidden;
+  line-height: 30px;
+}
+.list-info .body .sp .sfk .mon .sf {
+  font-size: 16px;
+}
+.list-info .body .sp .sfk .mon .money {
+  line-height: 27px;
+  font-size: 30px;
+  color: #ff0000;
+}
+.list-info .body .sp .sfk .ti {
+  width: 100%;
+  min-height: 1px;
+  overflow: hidden;
+  line-height: 20px;
+  font-size: 16px;
+}
+.list-info .body .zc {
+  background-color: #fff;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.list-info .body .zc .am-btn {
+  padding: 4px!important;
+}
+.list-info .body .zc .sc {
+  color: #333;
+}
+.list-info .body .zc .more {
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  margin-top: 10px;
+}

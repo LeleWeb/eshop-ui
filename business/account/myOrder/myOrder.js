@@ -12,7 +12,6 @@ define(["amaze","framework/services/accountService"],function(amaze,accountServi
 			headers:$scope.users.setheaders
 		}
 
-
 		$scope.gotoOrderDet = function(orderObjDetail){
 			console.log(orderObjDetail);
 			$scope.orderStatusCurrent.num = $scope.orderStatus;
