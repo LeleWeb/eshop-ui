@@ -11,7 +11,7 @@ define(["amaze","framework/services/homeService"],function (amaze,homePage){
 				var query={};
 				//此处查询满足分类为：精品水果，属性为：普通商品的所有商品。
 				query.category = category;
-				query.property = "1";
+				//query.property = "1";
 				homePageIns.categoryData(query).then(function(data){
 					if(data.code===0){
 						var panic_buying=data.data;
