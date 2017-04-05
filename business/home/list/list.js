@@ -2,7 +2,7 @@ define(["amaze","framework/services/homeService"],function (amaze,homePage){
 	var ctrl = ["$scope","$state","$stateParams","$http","$q","$interval",function($scope,$state, $stateParams,$http,$q,$interval){
 		var homePageIns = new homePage($q);
 		if($stateParams.type==="category"){
-			$scope.title="单品果切";
+			$scope.title="便利果切";
 			var query={};
 			query.category=$stateParams.value;
 			homePageIns.categoryData(query).then(function(data){
