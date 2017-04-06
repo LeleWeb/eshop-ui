@@ -18,7 +18,9 @@
                     <div ng-click = "p.changStatus();getAllPrice()" class="proLi-selectGoods" >
                         <input type="checkbox" ng-checked = "p.status == 'done'" />
                     </div>
-                    <div ng-click = "p.changStatus();getAllPrice()" ng-if="!p.subitems.length" class="proLi-goodsImg"><img ng-src="{{serviceAddress+p.product.pictures[2][0].document.url}}" class="am-img-responsive" alt="图片"/></div>
+                    <div ng-click = "p.changStatus();getAllPrice()" ng-if="!p.subitems.length" class="proLi-goodsImg">
+                        <img ng-src="{{serviceAddress+p.product.pictures[2][0].document.url}}" class="am-img-responsive" alt="图片"/>
+                    </div>
                     <div class="proLi-goodsDetails" ng-if="!p.subitems.length">
                         <div class="proLi-details">{{p.product.detail}}{{p.product.name}}</div>
                         <div class="proLi-value">

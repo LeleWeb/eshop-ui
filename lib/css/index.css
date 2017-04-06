@@ -456,7 +456,7 @@ span.normal-price{
 .proLi-list li{  list-style: none;  margin-top: 8px; /* border-bottom: 1px solid silver;*/ clear: both }
 .proLi-selectGoods{  float: left;  padding-left: 10px; width: 5%; height: 100%; padding-top: 15px;  }
 .proLi-goodsImg{  float: left;  margin-left: 10px;  padding-bottom: 10px;  width: 20%;  }
-.proLi-goodsImg img{  width: 80px;  height: 60px;  }
+.proLi-goodsImg img{  width: 80px;  height: 80px;  }
 .proLi-goodsDetails{  float: left;  width: 70%;  }
 .proLi-value{  margin-top: 12px;  }
 .proLi-goodsValue{  padding-left: 5%;  float: left;  width: auto;  }
