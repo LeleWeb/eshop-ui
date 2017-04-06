@@ -79,6 +79,7 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 				$scope.addOrChangeAddr();
 				// return;
 			};
+
 			var shopping_cart_ids=[];
 			for (var i = 0; i < $scope.displayOrderList.length; i++) {
 				shopping_cart_ids.push($scope.displayOrderList[i].id);
@@ -94,10 +95,8 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 			"pay_away":$scope.payWay
 		  }
 
-
 			shopInc.createOrderAndPay(header,{order:details}).then(function(data){
 				if(data.code!==0){
-					alert(data.message);
 					return;
 				}
 
@@ -106,7 +105,6 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 
 				if($scope.payWay===1){
 					var signature = prepayData;
-					//alert("000");
 					WeixinJSBridge.invoke(
 						'getBrandWCPayRequest', {
 							"appId" : signature.appId,     //公众号名称，由商户传入

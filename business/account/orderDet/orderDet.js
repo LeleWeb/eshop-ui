@@ -6,7 +6,6 @@ define(["amaze","framework/services/accountService"],function(amaze,accountServi
 				accountIns.getOrderDetail($stateParams.orderId).then(function(data){
 				$scope.orderCurrent = data.data;
 			},function(err){
-				// alert(111)
 				alert(err)
 			});
 			}else{
