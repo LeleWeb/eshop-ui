@@ -90,39 +90,44 @@
 			
 		</div>	
 <form>
-			<div  class="am-u-sm-12 det-value ">
-				<ul class="sku" >
-					<li class="teamset" ng-repeat = "plan in productDetails.plans track by $index"   style="font-size:12px;color:#333;padding-bottom:5px">
-							<div class="proLi-selectGoods" ng-click = "changStatus(plan,$index)">
-								<input type="radio"  ng-checked = "plan.checked "/>
-							</div>
+			<!--<div  class="am-u-sm-12 det-value ">-->
+				<!--<ul class="sku" >-->
+					<!--<li class="teamset" ng-repeat = "plan in productDetails.plans track by $index"   style="font-size:12px;color:#333;padding-bottom:5px">-->
+						<!--<div class="proLi-selectGoods" ng-click = "changStatus(plan,$index)">-->
+							<!--<input type="radio"  ng-checked = "plan.checked "/>-->
+						<!--</div>-->
 
-							<ul>
-								<li ng-repeat = "p in plan.plans track by $index" >
-									<div class="am-u-sm-12 det-value "> {{p.product}}
-										<span > ￥{{p.total_price}}</span>
-										<span> {{p.amount}}</span>
-									</div>
-								</li>
-							</ul>
-						￥{{plan.sum_price		}}
-					</li>
+						<!--<ul>-->
+							<!--<li ng-repeat = "p in plan.plans track by $index" >-->
+								<!--<div class="am-u-sm-12 det-value "> {{p.product}}-->
+									<!--<span > ￥{{p.total_price}}</span>-->
+									<!--<span> {{p.amount}}</span>-->
+								<!--</div>-->
+							<!--</li>-->
+						<!--</ul>-->
+						<!--￥{{plan.sum_price		}}-->
+					<!--</li>-->
 
-				</ul>
-			</div>
+				<!--</ul>-->
+			<!--</div>-->
 
 	<!-- 重新写这部分样式 2017.3.28 -->
-	<!--<div class="borderline" ng-repeat = "plan in productDetails.plans track by $index">-->
-		<!--<div class="am-g" ng-repeat = "p in plan.plans track by $index">-->
-			<!--<div class="am-u-sm-8 ">-->
-				<!--<span >{{p.product}}</span>-->
-			<!--</div>-->
-			<!--<div class="am-u-sm-4 ">-->
-				<!--<span > ￥{{p.total_price}}</span>-->
-				<!--<span> {{p.amount}}</span>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
+	<div class="am-u-sm-12">
+		<div class="computes_list" ng-repeat = "plan in productDetails.plans track by $index">
+			<ul class="am-list am-list-static am-list-border">
+				<li ng-repeat = "p in plan.plans track by $index">
+					<span >{{p.product}}</span>
+					<span class="am-fr xx">{{p.amount}}{{units[p.average_unit].name}} &yen{{p.total_price}}</span>
+				</li>
+				<li>
+					<div class="" ng-click = "changStatus(plan,$index)">
+						<input type="radio"  ng-checked = "plan.checked "/>
+						<span class="am-fr xx">总额 : &yen{{plan.sum_price}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </form>
 
 		<!--<div class="am-cf"></div>-->

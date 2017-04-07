@@ -23,16 +23,16 @@
 			  <li>
 		
 			</ul>
-			<form class="am-form-group">
+			<form class="am-form">
 				<label for="userName">收货人</label>
 				<input type="text" id="userName"  ng-model="currentuser.name"/>
 			</form>
-			<form class="am-form-group">
+			<form class="am-form">
 				<label for="userPhon">手机号码</label>
 				<input type="text" id="userPhon" ng-model="currentuser.phone"/>
 			</form>
 
-			<form class="am-form-group">
+			<form class="am-form">
 				<label for="detailAddress">详细地址</label>
 				<textarea rows="3" id="detailAddress"  ng-model="currentuser.details"></textarea>
 			</form>
@@ -40,7 +40,10 @@
 
 		<div class="am-u-sm-12 am-text-center reAdd-prompt">
 			<h3>目前支持配送地点</h3>
-			<p>软件新城及其周边地区</p>
+			<p>锦业路华为新基地</p>
+			<p>天谷八路软件新城</p>
+			<p>锦业一路西安软件园</p>
+			<p>锦业路周边小区</p>
 		</div>
 		<button class="am-btn paym-btn" ng-click="saveUserAddr();">新增地址</button>
  	</div>

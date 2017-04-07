@@ -75,7 +75,7 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 
 			// check address
 			if (!($scope.createOrderAddress.address && $scope.createOrderAddress.address.id ))  {
-				alert("请先添加收获地址");
+				alert("请先添加收货地址");
 				$scope.addOrChangeAddr();
 				// return;
 			};
