@@ -9,6 +9,10 @@ define(["amaze","framework/services/homeService"],function (amaze,homePage){
 		$scope.scrollTo = function(number){
 			$("body").animate({scrollTop: $("#products_"+number).position().top}, 2000);
 		}
+
+		$scope.searchProducts = function(keyword){
+			alert(keyword);
+		};
 		
 		function init(){
 			var query={};

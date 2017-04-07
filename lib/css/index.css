@@ -567,6 +567,7 @@ enter*/
 .det-addToCart{  background-color: #94D572;  }
 .menuGoodsNumSec{background-color: #ff7045; position: absolute;margin-top: 5px; border-radius: 100%;width: 18px;height: 18px;font-size: 10px;text-align: center;line-height: 18px;}
 .computes_list{ margin:10px }
+.search_box{ margin-top: 10px; border-bottom: 10px; }
 
 /*brands*/
 .am-g{ margin: 0px;  }

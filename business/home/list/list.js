@@ -27,7 +27,21 @@ define(["amaze","framework/services/homeService"],function (amaze,homePage){
 				console.log(err);
 				alert("我们出现了一些错误");
 			});			
-		}else{
+		}else if($stateParams.type==="search"){
+			$scope.title="搜索商品";
+			var query={};
+			query.search=$stateParams.value;
+			homePageIns.categoryData(query).then(function(data){
+				if(data.code===0){
+					var res=data.data;
+					$scope.products=res.products;
+				}
+			},function(err){
+				console.log(err);
+				alert("我们出现了一些错误");
+			});
+		}
+		else{
 			$scope.is_panic_buyings=true;
 			var index = $stateParams.index;
 			homePageIns.panic_buyings(10).then(function(data){

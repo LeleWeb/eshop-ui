@@ -4,6 +4,19 @@
         <div am-swiper-plug options = "adverts" style="height: 176px;"></div>
         <!-- slider end -->
 		<!--<div class="toothbg"></div>-->
+		<div class="am-g">
+			<div class="am-col col-lg-6">
+				<div class="am-input-group search_box">
+					<input type="text" class="am-form-field" ng-model="keyword">
+					<span class="am-input-group-btn">
+						<button class="am-btn am-btn-default" type="button" ui-sref="list({ type:'search',value:keyword})">
+							<span class="am-icon-search"></span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+
 		<div ng-if="panic_buying_ps.length>0" class = "xianshi">
 			<h2>限时抢购</h2> 
 			<span>剩余
@@ -17,7 +30,7 @@
 				<img ng-src="{{serviceAddress+p.pictures[2][0].document.url}}" >
 				<center>{{p.name}}</center>
 				<span class = "timemoney">￥{{p.prices[0].real_price}}</span><span >/500g</span>
-				
+
 			</div>
 			
 		</div>		
@@ -43,6 +56,8 @@
 					 src="http://www.dangxiaweb.com/uploads/document/pictures/navigation/tg.png">
 			</div>
 		</div>
+
+
 
 		<div class="tcWrap">
 			<div class=" product-title" id="{{panic_buying_ps.length>0?'products_1':'products_2'}}">热门选购</div>
