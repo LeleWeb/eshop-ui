@@ -17,7 +17,7 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 			content:"添加失败，请重新操作！",
 		}
 		$scope.modalObjErrComp = {
-			content:"请重新输入人数和金额,点击推荐，并选择套餐组合。！",
+			content:"没有合适的推荐,请重新输入人数和金额,点击推荐！",
 		}
 
 

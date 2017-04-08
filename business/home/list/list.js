@@ -34,7 +34,11 @@ define(["amaze","framework/services/homeService"],function (amaze,homePage){
 			homePageIns.categoryData(query).then(function(data){
 				if(data.code===0){
 					var res=data.data;
-					$scope.products=res.products;
+					if(res.products.length != 0){
+						$scope.products=res.products;
+					}else{
+						alert("没有搜索到商品！");
+					}
 				}
 			},function(err){
 				console.log(err);
