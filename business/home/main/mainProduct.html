@@ -57,16 +57,14 @@
 			</div>
 		</div>
 
-
-
 		<div class="tcWrap">
-			<div class=" product-title" id="{{panic_buying_ps.length>0?'products_1':'products_2'}}">热门选购</div>
+			<div class="product-title" id="{{panic_buying_ps.length>0?'products_1':'products_2'}}">热门选购</div>
 			<div data-am-widget="list_news" class="am-list-news am-list-news-default product-list" >
 				<div ng-repeat = "p in products_1 track by $index">
 					<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 
-					<figure data-am-widget="figure" class="am am-figure am-figure-default "   data-am-figure="{  pureview: 'true' }">
-						<img ng-src="{{serviceAddress+p.advert.pictures[0].document.url}}"  alt=""/>
+					<figure data-am-widget="figure" class="am am-figure am-figure-default " data-am-figure="{  pureview: 'true' }">
+						<img ng-src="{{serviceAddress+p.advert.pictures[0].document.url}}" alt=""/>
 						<figcaption class="am-figure-capition-btm">
 							{{p.advert.description}}
 						</figcaption>
