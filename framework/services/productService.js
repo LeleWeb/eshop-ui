@@ -27,7 +27,6 @@ define(["angular","framework/http"],function(angular,https){
 		});
 	}
 	pdtRequest.prototype.addTobagList = function(params,datalist){
-		console.log(datalist)
 		datalist = JSON.stringify(datalist)
 
 		return this.doRequest({

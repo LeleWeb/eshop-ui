@@ -71,8 +71,6 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 		}
 		// createOrderAndPay
 		$scope.getSigntureAndPay = function(){
-
-
 			// check address
 			if (!($scope.createOrderAddress.address && $scope.createOrderAddress.address.id ))  {
 				alert("请先添加收货地址");
@@ -92,7 +90,8 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 		    "shopping_cart_ids": shopping_cart_ids,
 			"delivery_time" :$scope.delivery_time,
 		    "address_id": $scope.createOrderAddress.address.id,
-			"pay_away":$scope.payWay
+			"pay_away": $scope.payWay,
+			"remark": $scope.remark
 		  }
 
 			shopInc.createOrderAndPay(header,{order:details}).then(function(data){
@@ -140,7 +139,7 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 
 
 		$scope.allPrice = orderList.allPrice;
-		console.log($scope.displayOrderList,"orderlist.....")
+		//console.log($scope.displayOrderList,"orderlist.....")
 		// get select product end
 
 		$scope.addOrChangeAddr = function(){
@@ -161,9 +160,9 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 
 			shopInc.getAccountAddress($scope.users.owner_id).then(function(data){
 			// shopInc.getAccountAddress($scope.users.customer.id).then(function(data){
-				console.log(data);
+			//	console.log(data);
 				filterDefault(data.data)
-				console.log($scope.createOrderAddress.address)
+				//console.log($scope.createOrderAddress.address)
 				function filterDefault(data){
 					if (!data.length) {
 						$scope.createOrderAddress.address = "";

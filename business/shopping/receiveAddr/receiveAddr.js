@@ -50,7 +50,7 @@ define(["amaze","framework/services/shoppingService",],function (amaze,userAddr)
 			addressInc.createAddress(header,data).then(function(data){
 				// alert("添加成功");
 				$state.go("payment.pay");
-				console.log(data);
+				//console.log(data);
 			},function(err){
 				console.log(err)
 			});
@@ -62,14 +62,14 @@ define(["amaze","framework/services/shoppingService",],function (amaze,userAddr)
 			
 			addressInc.updateAddress(header,address).then(function(data){
 				$state.go("payment.pay");
-				console.log(data);
+				//console.log(data);
 			},function(err){
 				console.log(err)
 			});
 		}
 		$scope.deleteAddr = function(num){
 			addressInc.deleteAddr({headers:$scope.users.setheaders},num).then(function(data){
-				console.log(data,"deletesucce.....")
+				//console.log(data,"deletesucce.....")
 				initAddress()
 			},function(){
 

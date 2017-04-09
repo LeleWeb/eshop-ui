@@ -6,14 +6,14 @@ define(["amaze","framework/services/accountService"],function(amaze,accountServi
 		// console.log($stateParams.statusId,"$stateParams....")
 
 		var accountIns = new accountService($q);
-		console.log(id,"myordre.....")
+		//console.log(id,"myordre.....")
 		// valid
 		var header = {
 			headers:$scope.users.setheaders
 		}
 
 		$scope.gotoOrderDet = function(orderObjDetail){
-			console.log(orderObjDetail);
+			//console.log(orderObjDetail);
 			$scope.orderStatusCurrent.num = $scope.orderStatus;
 			$scope.orderDetailsDisplay.order = orderObjDetail;
 			$state.go("orderDet");
@@ -49,7 +49,7 @@ define(["amaze","framework/services/accountService"],function(amaze,accountServi
 		}
 		function init(){
 			$(".loading").show();
-			console.log($scope.orderStatusCurrent.num)
+			//console.log($scope.orderStatusCurrent.num)
 			if ($scope.orderStatusCurrent.num != -1) {
 				$scope.orderStatus = $scope.orderStatusCurrent.num;
 			};
@@ -57,7 +57,7 @@ define(["amaze","framework/services/accountService"],function(amaze,accountServi
 			accountIns.getOrderStatus($scope.users.owner_id).then(function(data){
 				
 				$scope.orderList = data.data.orders;
-				console.log(data.data)
+				//console.log(data.data)
 				filterStatus($scope.orderList);
 				// alert(JSON.stringify(data))
 			},function(err){

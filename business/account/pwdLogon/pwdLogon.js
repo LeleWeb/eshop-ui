@@ -1,7 +1,7 @@
 define(["amaze","framework/services/accountService"],function(amaze,account){
 	var ctrl = ["$scope","$q","$state",function($scope,$q,$state){
 		var accountIns = new account($q);
-		console.log(accountIns);
+		//console.log(accountIns);
 		$scope.dataLogon = {
 			"username":"18717373045",
 			"password":"1234"

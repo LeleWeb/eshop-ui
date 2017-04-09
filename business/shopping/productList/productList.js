@@ -71,7 +71,7 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 		$scope.deleteProductNumber = function(num){
 			
 			shopInc.deleteProductNumber({headers:$scope.users.setheaders},num).then(function(data){
-				console.log(data,"deletesucce.....")
+				//console.log(data,"deletesucce.....")
 				init();
 			},function(){
 
@@ -89,7 +89,7 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 			shopInc.getAllOrderList($scope.users.customer.id).then(function(data){
 
 				// alert(JSON.stringify(data.data));
-				console.log(data,"getAllOrderList....")
+				//console.log(data,"getAllOrderList....")
 				var pdtList= data.data.carts;
 				for(var i=0;i<pdtList.length;i++){
 					var p=pdtList[i];

@@ -37,7 +37,7 @@ define(["amaze","framework/services/accountService"],function(amaze,accountServi
 			// }
 
 			accountIns.saveBankAddress(header,data).then(function(data){
-				console.log(data)
+				//console.log(data)
 				if (data.message == "successful") {
 					alert("添加成功！")
 					$state.go("takeMoney")

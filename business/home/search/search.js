@@ -6,7 +6,6 @@ define(["amaze","framework/services/homeService"],function(amaze,homePage){
         $scope.searchData = function(){
         	if ($scope.searchString) {
 		        homePageIns.getSearchData($scope.searchString).then(function(data){
-                    console.log(data)
 		        	$scope.displayProducetList = data.data;
 		        },function(err){
 		        	console.log(err)

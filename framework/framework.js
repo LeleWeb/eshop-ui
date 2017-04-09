@@ -131,7 +131,6 @@ define(
 					    "store_id": "1"
 					}
 					accountIns.creatDistribution({headers:$rootScope.users.setheaders},params).then(function(data){
-						console.log(data,8888)
 					},function(err){
 						console.log(err)
 					});

@@ -134,8 +134,6 @@ define(["ui-router","swiper","amaze"],function(router,Swiper,zmaze){
 				scope.production.edit = function(){
 					if (initNum != scope.production.amount) {
 						parent.changebagListNum(scope.production.amount,scope.production.price.real_price,scope.production.id,initNum).then(function(data){
-
-							console.log(data)
 						},function(err){
 							scope.production.amount = initNum;
 							alert("编辑失败，请重新操作！");

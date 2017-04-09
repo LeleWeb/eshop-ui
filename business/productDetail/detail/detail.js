@@ -143,9 +143,6 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 				},2000)
 
 				$scope.shopListNum.num++;
-				
-				console.log(data);
-
 			},function(err){
 				$scope.modalObj.hideDialog();
 				$scope.modalObjErr.showDialogdwhite()
