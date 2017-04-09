@@ -12,6 +12,11 @@
 		<!--列表标题-->
 		<div class="am-list-news-bd">
 			<ul class="am-list"  >
+				<li ng-if="products.length == 0" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+					<div class="am-u-sm-12 am-list-main">
+						<h2 class="am-list-item-hd btn-recommend">未搜索到商品！</h2>
+					</div>
+				</li>
 				<!--缩略图在标题左边-->
 				<li ui-sref="detail({ productId: {{p.id}} })" class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" ng-repeat = "p in products track by $index" ng-click = "gotoProductDetail(p.id)" >
 					<div class="am-u-sm-4 am-list-thumb">
@@ -26,8 +31,6 @@
 						<span class="am-vertical-align-middle "ng-click = "addToBag()">加入购物车</span>
 					</div>
 				</li>
-
-
 			</ul>
 		</div>
 

@@ -1,6 +1,7 @@
 define(["amaze","framework/services/homeService"],function (amaze,homePage){
 	var ctrl = ["$scope","$state","$stateParams","$http","$q","$interval",function($scope,$state, $stateParams,$http,$q,$interval){
 		var homePageIns = new homePage($q);
+
 		if($stateParams.type==="category"){
 			$scope.title="便利果切";
 			var query={};
@@ -34,11 +35,7 @@ define(["amaze","framework/services/homeService"],function (amaze,homePage){
 			homePageIns.categoryData(query).then(function(data){
 				if(data.code===0){
 					var res=data.data;
-					if(res.products.length != 0){
-						$scope.products=res.products;
-					}else{
-						alert("没有搜索到商品！");
-					}
+					$scope.products=res.products;
 				}
 			},function(err){
 				console.log(err);

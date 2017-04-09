@@ -20,8 +20,6 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 			content:"没有合适的推荐,请重新输入人数和金额,点击推荐！",
 		}
 
-
-
 		var obj = {};
 		function getUsercountId(){
 			if ($scope.users !== obj && $scope.users.owner_id) {
