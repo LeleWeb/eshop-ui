@@ -54,9 +54,9 @@
 
                 <li ng-if ="!pdtList.length" class = "proLi-empty">
                     <div class="am-text-center"><span class="am-icon-cart-plus am-icon-lg"></span></div>
-                    <div class="am-text-center">您的购物车空空如也</div>
-                    <div class="am-text-center proLi-text14">快去挑点宝贝吧</div>
-                    <div ui-sref = "home" class="am-text-center"><button class="am-btn">去逛逛</button></div>
+                    <div class="am-text-center" style="color:red;">您的购物车空空如也</div>
+                    <div class="am-text-center proLi-text14" style="color:red;">快去挑点宝贝吧</div>
+                    <div ui-sref = "home" class="am-text-center"><button class="am-btn" style="background-color:#DD2727;color:white;">去逛逛</button></div>
                 </li>
             </ul>
         </div>
@@ -68,7 +68,7 @@
     </div>
 </div>
 
-<div ng-if="users.owner_id" class="am-topbar am-topbar-fixed-bottom" style="margin-bottom: 40px">
+<div ng-if="users.owner_id" class="am-topbar am-topbar-fixed-bottom" style="bottom: 0px;margin-bottom:42px;z-index: 100000000;">
     <div class = "am-g">
         <div ng-click = "isSelALL=!isSelALL;isAllPrice(isSelALL)" class="am-u-sm-6 am-vertical-align" style= "height:50px;margin-bottom: 0px;padding-left: 15px;">
             <span class="am-vertical-align-middle price-sum"> <input type="radio" ng-checked = "isSelALL" />全选&nbsp;&nbsp;&nbsp;&nbsp;总计: ￥{{allPrice || 0}}</span>
