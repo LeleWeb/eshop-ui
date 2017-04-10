@@ -1,8 +1,5 @@
 <div class = "am-animation-fade">
-
-
     <!-- <div class="am-g proLi-volume"><span class="am-icon-volume-up"></span>请在19:43内提交订单，时间结束后商品可能被抢完。</div> -->
-    
     <div>
         <!-- <div ng-if = "true" class="am-g proLi-list"> -->
         <div ng-if = "users.owner_id" class="am-g proLi-list">
@@ -70,14 +67,15 @@
 
     </div>
 </div>
-	<div ng-if = "users.owner_id"  class="am-topbar am-topbar-fixed-bottom" style="bottom: 0px;margin-bottom:0px;z-index: 100000000;">
-		<div class = "am-g">
-			<div ng-click = "isSelALL=!isSelALL;isAllPrice(isSelALL)" class="am-u-sm-6 am-vertical-align" style= "height:50px;margin-bottom: 0px;padding-left: 15px;">
-				<span class="am-vertical-align-middle price-sum"> <input type="checkbox" ng-checked = "isSelALL" />总计 ￥{{allPrice || 0}}</span>
-			</div>
-   
-			<div class="am-u-sm-6 am-vertical-align am-fr" style= "height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
-				<span class="am-vertical-align-middle" ng-click = "changedPage2payment()">去结算</span>
-			</div>
-		</div>
-	</div>	
+
+<div ng-if="users.owner_id" class="am-topbar am-topbar-fixed-bottom" style="margin-bottom: 40px">
+    <div class = "am-g">
+        <div ng-click = "isSelALL=!isSelALL;isAllPrice(isSelALL)" class="am-u-sm-6 am-vertical-align" style= "height:50px;margin-bottom: 0px;padding-left: 15px;">
+            <span class="am-vertical-align-middle price-sum"> <input type="radio" ng-checked = "isSelALL" />全选&nbsp;&nbsp;&nbsp;&nbsp;总计: ￥{{allPrice || 0}}</span>
+        </div>
+
+        <div class="am-u-sm-6 am-vertical-align am-fr" style= "height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
+            <span class="am-vertical-align-middle" ng-click = "changedPage2payment()">去结算</span>
+        </div>
+    </div>
+</div>

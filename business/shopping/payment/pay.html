@@ -43,9 +43,9 @@
 								<td>{{p.amount}} {{units[p.price.unit].name}}</td>
 							</tr>
 							<tr ng-repeat = "plan in p.subitems track by $index">
-							<td>{{plan.product.name}}  </td>
-							<td>￥{{plan.amount*plan.price.real_price}} </td>
-							<td>{{plan.amount}} {{units[plan.price.unit].name}}</td>
+								<td>{{plan.product.name}}  </td>
+								<td>￥{{plan.amount*plan.price.real_price}} </td>
+								<td>{{plan.amount}} {{units[plan.price.unit].name}}</td>
 							</tr>
 						
 						</tbody>
@@ -60,7 +60,7 @@
 		<div ng-show="productDetails.category_id!==3"  class="am-u-sm-12 det-value">
 			<ul class="sku">
 				<li >
-					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">配送时间:<a style="color:#f6325b;margin-left:15px;"></a></dt>
+					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">选择配送时间:<a style="color:#f6325b;margin-left:15px;"></a></dt>
 					<dd class="sku-item" >
 						<span data-key="0" ng-repeat="time in timeSelects track by $index" class="select {{time==selecTime?'ed':''}}" ng-click="selectTime(time)">{{time}}</span>
 					 
@@ -76,9 +76,9 @@
 		<div ng-show="productDetails.category_id!==3"  class="am-u-sm-12 det-value">
 			<ul class="sku">
 				<li >
-					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">支付方式:<a style="color:#f6325b;margin-left:15px;"></a></dt>
+					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">选择支付方式:<a style="color:#f6325b;margin-left:15px;"></a></dt>
 					<dd class="sku-item" >
-						<span class="select {{payWay==2?'ed':''}}" ng-click="selectPayWay(2)">货到付款</span>
+						<!--<span class="select {{payWay==2?'ed':''}}" ng-click="selectPayWay(2)">货到付款</span>-->
 						<span class="select {{payWay==1?'ed':''}}" ng-click="selectPayWay(1)">微信支付</span>
 					 
 					</dd>

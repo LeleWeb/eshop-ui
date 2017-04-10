@@ -186,7 +186,7 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 			});
 		}
 		initAddress();
-		$scope.payWay=2;
+		$scope.payWay=1;
 		$scope.selectPayWay=function (type){
 			$scope.payWay=type;
 		}
