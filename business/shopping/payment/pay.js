@@ -1,5 +1,5 @@
 define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,shopList){
-	var ctrl = ["$scope","$state","orderList","$q",function($scope,$state,orderList,$q){
+	var ctrl = ["$scope","$state","orderList","$q", "$rootScope", function($scope,$state,orderList,$q, $rootScope){
 		var shopInc = new shopList($q);
 		// get select product start
 		$scope.displayOrderList = orderList.getList();
@@ -149,7 +149,8 @@ define(["amaze","wx","framework/services/shoppingService"],function (amaze,wx,sh
 
 		function getShopListNum(){
 			shopInc.getAllOrderList($scope.users.customer.id).then(function(data){
-				$scope.shopListNum.num = data.data.total_count;
+				//$scope.shopListNum.num = data.data.total_count;
+				$rootScope.shopListNum.num = data.data.total_count;
 			},function(err){
 				alert("网络不流畅，请重新操作！")
 				console.log(err,"shopInc...err....")

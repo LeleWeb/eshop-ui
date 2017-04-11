@@ -1,6 +1,6 @@
 define(["amaze","framework/services/productService"],function (amaze,pdt){
 
-	var ctrl = ["$scope","$state","$stateParams","$http","$q","orderList",function($scope,$state, $stateParams,$http,$q,orderList){
+	var ctrl = ["$scope","$state","$stateParams","$http","$q","orderList", "$rootScope", function($scope,$state, $stateParams,$http,$q,orderList, $rootScope){
 
 		// $scope.slideFruitData = ["lib/images/img5.png","lib/images/lemon_12.png","lib/images/sangshen_15.png","lib/images/small.jpg","lib/images/spic3.png"];
 		$scope.slideFruitData = []
@@ -142,7 +142,8 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 					$scope.modalObjSuc.hideDialog();
 				},2000)
 
-				$scope.shopListNum.num++;
+				//$scope.shopListNum.num++;
+				$rootScope.shopListNum.num++;
 			},function(err){
 				$scope.modalObj.hideDialog();
 				$scope.modalObjErr.showDialogdwhite()
@@ -167,8 +168,9 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 				$scope.modalObj.hideDialog();
 				$scope.modalObjSuc.showDialogdwhite();
 
-				$scope.shopListNum.num++;
-				
+				//$scope.shopListNum.num++;
+				$rootScope.shopListNum.num++;
+
 				orderList.allPrice = data.data.total_price;
 				orderList.setList([data.data]);
 				$state.go("payment.pay");

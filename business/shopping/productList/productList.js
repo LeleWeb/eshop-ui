@@ -1,5 +1,5 @@
 define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
-	var ctrl = ["$scope","$state","$q","orderList",function($scope,$state,$q,orderList){
+	var ctrl = ["$scope","$state","$q","orderList", "$rootScope", function($scope,$state,$q,orderList, $rootScope){
 
 		var shopInc = new shopList($q);
 		// console.log($scope.users.owner_id,"owner_id...");
@@ -84,7 +84,18 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 		$scope.gotoShopList = function(){
 			$state.go("payment.pay");
 			$scope.modalObj.hideDialog();
-		}
+		};
+
+		$scope.reduceAmount = function(obj){
+			obj.amount--;
+			$rootScope.shopListNum.num--;
+		};
+
+		$scope.increaseAmount = function(obj){
+			obj.amount++;
+			$rootScope.shopListNum.num++;
+		};
+
 		function init(){
 			shopInc.getAllOrderList($scope.users.customer.id).then(function(data){
 
@@ -107,7 +118,7 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 					}
 				}
 				$scope.pdtList=pdtList;
-				$scope.shopListNum.num = $scope.pdtList.length;
+				//$scope.shopListNum.num = $scope.pdtList.length;
 				$scope.isSelALL=true;
 				$scope.isAllPrice($scope.isSelALL);
 				// alert($scope.shopListNum.num)

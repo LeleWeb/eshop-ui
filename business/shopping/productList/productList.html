@@ -24,10 +24,11 @@
                             <div ng-click = "p.changStatus();getAllPrice()" class="proLi-goodsValue"><span class="normal-price">￥{{(p.amount*p.price.real_price).toFixed(2)}}</span></div>
                             <div class="am-btn-group am-btn-group-xs proLi-goodsNum">
                                 <span ng-click = "p.changStatus();getAllPrice()" >数量</span>
-                                <span ng-if = "p.productEdit" ng-click = "p.reduce();getAllPrice()">-</span>
+                                <!--<span ng-if = "p.productEdit" ng-click = "p.reduce();getAllPrice()">-</span>-->
+                                <span ng-if = "p.productEdit" ng-click = "reduceAmount(p);getAllPrice()">-</span>
                                 <span>{{p.amount}}{{units[p.price.unit].name}}</span>
-                                <span ng-if = "p.productEdit" ng-click = "p.increase();getAllPrice()">+</span>
-                               
+                                <!--<span ng-if = "p.productEdit" ng-click = "p.increase();getAllPrice()">+</span>-->
+                                <span ng-if = "p.productEdit" ng-click = "increaseAmount(p);getAllPrice()">+</span>
                             </div>
                         </div>
                     </div>
