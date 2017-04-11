@@ -436,7 +436,57 @@ span.normal-price{
 .home-item .superShop{padding:6px;}
 .center-title{    text-align: center;  }
 .center-title .text{border: 3px solid #423e3f;   padding: 1px 10px;}
-    
+
+.buy_car {
+    /*position: absolute;*/
+    float: right;
+    width: 80px;
+    height: 27px;
+    bottom: 10px;
+    right: 10px;
+    background-color: #36c71e;
+    color: #fff;
+    z-index: 10;
+    border-radius: 2px;
+}
+
+.buy_car .icon_wrap {
+    /*position: absolute;*/
+    width: 80px;
+    height: 27px;
+    top: 0;
+    left: 0;
+    line-height: 27px;
+    border-radius: 2px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 12px;
+    text-align: center;
+}
+
+.pd_title {
+    display: -webkit-box;
+    height: 35px;
+    line-height: 17px;
+    font-size: 15px;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+.pd_op_text_one {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #f02b2b;
+    max-width: 190px;
+    overflow: hidden;
+    height: 17px;
+    line-height: 17px;
+}
 
 /**********************/
 /*****�ڶ�ҳ����ʽ��ʼ****/

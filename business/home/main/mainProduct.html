@@ -80,10 +80,16 @@
 								</div>
 
 								<div class=" am-u-sm-8 am-list-main">
-									<h2 class="am-list-item-hd">{{product.name}}</h2>
+									<!--<h2 class="am-list-item-hd">{{product.name}}</h2>-->
+									<div class="pd_title">{{product.name}}</div>
 
-									<div class="am-list-item-text">{{product.description}}</div>
-									<div><span class="normal-price">¥{{product.prices[0].real_price}}</span></div>
+									<div class="pd_op_text_one">{{product.description}}</div>
+									<div>
+										<span class="normal-price" >¥{{product.prices[0].real_price}}</span><span>/斤</span>
+										<div class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(product.id);$event.stopPropagation();">
+											<div class="icon_wrap">加入购物车</div>
+										</div>
+									</div>
 								</div>
 							</li>
 						</ul>
@@ -114,7 +120,11 @@
 		  <!--<p class="copy">© 2016 西安连线网络科技有限公司<br>沪ICP备13016979号</p>-->
 		<!--</div>-->
     </div>
-    
+
+	<div am-modal-plug options = "modalObj"></div>
+	<div am-modal-plug options = "modalObjSuc"></div>
+	<div am-modal-plug options = "modalObjErr"></div>
+	<div am-modal-plug options = "modalObjErrComp"></div>
 </div>
 <!--内容区域结束-->
 <!-- <div ui-view></div> -->
