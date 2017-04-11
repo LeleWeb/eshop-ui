@@ -190,12 +190,12 @@
         <div class="psxx">
             <!--<p>配送信息</p>-->
             <span>下单时间: </span>
-            <span class="am-fr xx">{{orderCurrent.created_at}}</span>
+            <span class="am-fr xx">{{orderCurrent.created_at.replace("T"," ").substr(0,16)}}</span>
         </div>
         <div class="psxx">
             <!--<p>配送信息</p>-->
             <span>配送时间: </span>
-            <span class="am-fr xx">{{orderCurrent.delivery_time}}</span>
+            <span class="am-fr xx">{{orderCurrent.delivery_time.replace("T"," ").substr(0,16)}}</span>
         </div>
         <div class="psxx">
             <span>给卖家留言: </span>
