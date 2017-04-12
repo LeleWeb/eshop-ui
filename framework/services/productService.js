@@ -36,5 +36,15 @@ define(["angular","framework/http"],function(angular,https){
 			headers:params.headers
 		});
 	}
+	pdtRequest.prototype.updateShoppingCartAccount = function(params, id, data){
+		data = JSON.stringify(data)
+
+		return this.doRequest({
+			url: "/api/v1/carts/" + id,
+			method: "put",
+			data: data,
+			headers: params.headers
+		});
+	}
 	return pdtRequest;
 });

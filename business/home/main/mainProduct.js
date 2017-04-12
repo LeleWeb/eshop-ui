@@ -145,7 +145,6 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 					},500)
 
 					// 购物车总数自增
-					//$scope.shopListNum.num++;
 					$rootScope.shopListNum.num++;
 
 					// 用新建的购物车项对象，刷新商品的购物车属性。
@@ -162,13 +161,25 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 			});
 		};
 
-		$scope.reduceAmount = function(obj){
-			if(obj.customerAmount > 0){
-				obj.customerAmount--;
-			}
+		$scope.reduceAmount = function(price, shopping_cart){
+			if(shopping_cart.amount > 0){
+				amount = shopping_cart.amount - 1;
 
-			if(obj.amount > 0){
-				obj.amount--;
+				// 调用服务端接口，修改购物车商品数量
+				pdtIns.updateShoppingCartAccount($scope.addTobagData,
+												 shopping_cart.id,
+												 {cart: { amount: amount, total_price: price*amount}}).then(function(data){
+					// 用新建的购物车项对象，刷新商品的购物车属性。
+					var cart = data.data;
+					shopping_cart.amount = cart.amount;
+					shopping_cart.total_price = cart.total_price;
+				},function(err){
+					$scope.modalObj.hideDialog();
+					$scope.modalObjErr.showDialogdwhite()
+					setTimeout(function(){
+						$scope.modalObjErr.hideDialog();
+					},1000)
+				});
 			}
 
 			if($rootScope.shopListNum.num > 0){
@@ -176,9 +187,25 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 			}
 		};
 
-		$scope.increaseAmount = function(obj){
-			obj.customerAmount++;
-			obj.amount++;
+		$scope.increaseAmount = function(price, shopping_cart){
+			amount = shopping_cart.amount + 1;
+
+			// 调用服务端接口，修改购物车商品数量
+			pdtIns.updateShoppingCartAccount($scope.addTobagData,
+											 shopping_cart.id,
+											 {cart: { amount: amount, total_price: price*amount}}).then(function(data){
+				// 用新建的购物车项对象，刷新商品的购物车属性。
+				var cart = data.data;
+				shopping_cart.amount = cart.amount;
+				shopping_cart.total_price = cart.total_price;
+			},function(err){
+				$scope.modalObj.hideDialog();
+				$scope.modalObjErr.showDialogdwhite()
+				setTimeout(function(){
+					$scope.modalObjErr.hideDialog();
+				},1000)
+			});
+
 			$rootScope.shopListNum.num++;
 		};
 		
