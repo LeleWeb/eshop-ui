@@ -18,13 +18,13 @@ define(["amaze","framework/services/shoppingService",],function (amaze,userAddr)
 			{  
 				alert('请输入有效的手机号码！');
 				return false;
-			}  
-			  
-			var myreg =/^1[3|4|5|8][0-9]\d{4,8}$/;  
-			if(!myreg.test(mobile))  
-			{  
-				alert('请输入有效的手机号码！');  
-				return false;  
+			}
+
+			var myreg = /^1\d{10}$/;
+			if(!myreg.test(mobile))
+			{
+				alert('请输入有效的手机号码！');
+				return false;
 			}
 			return true;  
 		}  

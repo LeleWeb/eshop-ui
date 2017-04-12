@@ -74,9 +74,9 @@
 					<div class="am-list-news-bd">
 						<ul class="am-list"  >
 							<!--缩略图在标题左边-->
-							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" ng-repeat = "product in p.advert.products track by $index" ng-click = "gotoProductDetail(product.id)" >
+							<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" style="padding:0px;" ng-repeat = "product in p.advert.products track by $index" ng-click = "gotoProductDetail(product.id)" >
 								<div class="am-u-sm-4 am-list-thumb">
-									<img ng-src="{{serviceAddress+product.pictures[2][0].document.url}}"/>
+									<img class="product-list-img" ng-src="{{serviceAddress+product.pictures[2][0].document.url}}"/>
 								</div>
 
 								<div class=" am-u-sm-8 am-list-main">
@@ -84,7 +84,7 @@
 									<div class="pd_title">{{product.name}}</div>
 
 									<div class="pd_op_text_one">{{product.description}}</div>
-									<div>
+									<div class="product-list-price" style="position:absolute;bottom:0px">
 										<span class="normal-price" >¥{{product.prices[0].real_price}}</span><span>/斤</span>
 										<div class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(product.id);$event.stopPropagation();">
 											<div class="icon_wrap">加入购物车</div>

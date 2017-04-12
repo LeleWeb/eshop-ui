@@ -119,6 +119,7 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 				}
 				$scope.pdtList=pdtList;
 				//$scope.shopListNum.num = $scope.pdtList.length;
+				$rootScope.shopListNum.num = $scope.pdtList.length;
 				$scope.isSelALL=true;
 				$scope.isAllPrice($scope.isSelALL);
 				// alert($scope.shopListNum.num)

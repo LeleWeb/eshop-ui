@@ -96,7 +96,7 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 						$scope.modalObjErrComp.showDialogdwhite()
 						setTimeout(function(){
 							$scope.modalObjErrComp.hideDialog();
-						},2000)
+						},1000)
 						return;
 					}
 					var computesPlan=$scope.productDetails.plans[$scope.productDetails.planIndex];
@@ -142,7 +142,7 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 					$scope.modalObjSuc.showDialogdwhite();
 					setTimeout(function(){
 						$scope.modalObjSuc.hideDialog();
-					},2000)
+					},1000)
 
 					//$scope.shopListNum.num++;
 					$rootScope.shopListNum.num++;
@@ -151,7 +151,7 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 					$scope.modalObjErr.showDialogdwhite()
 					setTimeout(function(){
 						$scope.modalObjErr.hideDialog();
-					},2000)
+					},1000)
 				})
 			},function(err){
 				console.log("error....");
