@@ -35,7 +35,7 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 			alert(keyword);
 		};
 
-		$scope.addToBag = function(productId){
+		$scope.addToBag = function(product){
 			if (!$scope.users.owner_id) {
 				alert("请先登录");
 				return;
@@ -43,7 +43,7 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 			// add function
 			$scope.modalObj.showDialog();
 
-			pdtIns.getDataforHome(productId).then(function(data){
+			pdtIns.getDataforHome(product.id).then(function(data){
 				$(".loading").hide();
 				var productDetails = data.data;
 
@@ -142,10 +142,14 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 					$scope.modalObjSuc.showDialogdwhite();
 					setTimeout(function(){
 						$scope.modalObjSuc.hideDialog();
-					},1000)
+					},500)
 
+					// 购物车总数自增
 					//$scope.shopListNum.num++;
 					$rootScope.shopListNum.num++;
+
+					// 用新建的购物车项对象，刷新商品的购物车属性。
+					product.shopping_cart = data.data
 				},function(err){
 					$scope.modalObj.hideDialog();
 					$scope.modalObjErr.showDialogdwhite()
@@ -156,6 +160,26 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 			},function(err){
 				console.log("error....");
 			});
+		};
+
+		$scope.reduceAmount = function(obj){
+			if(obj.customerAmount > 0){
+				obj.customerAmount--;
+			}
+
+			if(obj.amount > 0){
+				obj.amount--;
+			}
+
+			if($rootScope.shopListNum.num > 0){
+				$rootScope.shopListNum.num--;
+			}
+		};
+
+		$scope.increaseAmount = function(obj){
+			obj.customerAmount++;
+			obj.amount++;
+			$rootScope.shopListNum.num++;
 		};
 		
 		function init(){
