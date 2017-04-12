@@ -85,7 +85,7 @@
 
 									<div class="pd_op_text_one">{{product.description}}</div>
 									<div class="product-list-price" style="position:absolute;bottom:0px">
-										<span class="normal-price" >¥{{product.prices[0].real_price}}</span><span>/斤</span>
+										<span class="normal-price">¥{{product.prices[0].real_price}}</span><span>/斤</span>
 										<div ng-if="!(product.shopping_cart.amount != undefined && product.shopping_cart.amount > 0)" class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(product);$event.stopPropagation();">
 											<div class="icon_wrap">加入购物车</div>
 										</div>
