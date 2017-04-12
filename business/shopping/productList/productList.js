@@ -1,7 +1,13 @@
-define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
+define(["amaze","framework/services/shoppingService", "framework/services/productService"],function (amaze,shopList, pdt){
 	var ctrl = ["$scope","$state","$q","orderList", "$rootScope", function($scope,$state,$q,orderList, $rootScope){
-
+		var pdtIns = new pdt($q);
 		var shopInc = new shopList($q);
+
+		$scope.addTobagData = {
+			data:$scope.dataList,
+			headers:$scope.users.setheaders
+		};
+
 		// console.log($scope.users.owner_id,"owner_id...");
 		$scope.getAllPrice = function(){
 			var allPrice = 0 ;
@@ -86,13 +92,51 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 			$scope.modalObj.hideDialog();
 		};
 
-		$scope.reduceAmount = function(obj){
-			obj.amount--;
-			$rootScope.shopListNum.num--;
+		$scope.reduceAmount = function(shopping_cart){
+			if(shopping_cart.amount > 0){
+				amount = shopping_cart.amount - 1;
+
+				// 调用服务端接口，修改购物车商品数量
+				pdtIns.updateShoppingCartAccount($scope.addTobagData,
+					shopping_cart.id,
+					{cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}}).then(function(data){
+						// 用新建的购物车项对象，刷新商品的购物车属性。
+						var cart = data.data;
+						shopping_cart.amount = cart.amount;
+						shopping_cart.total_price = cart.total_price;
+					},function(err){
+						$scope.modalObj.hideDialog();
+						$scope.modalObjErr.showDialogdwhite()
+						setTimeout(function(){
+							$scope.modalObjErr.hideDialog();
+						},1000)
+					});
+			}
+
+			if($rootScope.shopListNum.num > 0){
+				$rootScope.shopListNum.num--;
+			}
 		};
 
-		$scope.increaseAmount = function(obj){
-			obj.amount++;
+		$scope.increaseAmount = function(shopping_cart){
+			amount = shopping_cart.amount + 1;
+
+			// 调用服务端接口，修改购物车商品数量
+			pdtIns.updateShoppingCartAccount($scope.addTobagData,
+				shopping_cart.id,
+				{cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}}).then(function(data){
+					// 用新建的购物车项对象，刷新商品的购物车属性。
+					var cart = data.data;
+					shopping_cart.amount = cart.amount;
+					shopping_cart.total_price = cart.total_price;
+				},function(err){
+					$scope.modalObj.hideDialog();
+					$scope.modalObjErr.showDialogdwhite()
+					setTimeout(function(){
+						$scope.modalObjErr.hideDialog();
+					},1000)
+				});
+
 			$rootScope.shopListNum.num++;
 		};
 
@@ -119,7 +163,7 @@ define(["amaze","framework/services/shoppingService"],function (amaze,shopList){
 				}
 				$scope.pdtList=pdtList;
 				//$scope.shopListNum.num = $scope.pdtList.length;
-				$rootScope.shopListNum.num = $scope.pdtList.length;
+				//$rootScope.shopListNum.num = $scope.pdtList.length;
 				$scope.isSelALL=true;
 				$scope.isAllPrice($scope.isSelALL);
 				// alert($scope.shopListNum.num)
