@@ -91,7 +91,8 @@
 										</div>
 										<div ng-if="product.shopping_cart.amount != undefined && product.shopping_cart.amount > 0" class="am-btn-group am-btn-group-xs proLi-goodsNum">
 											<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduceAmount(product.prices[0].real_price, product.shopping_cart);$event.stopPropagation();"></span>
-											<input ng-model="product.shopping_cart.amount" style="border:1px solid #aaa;" type="text" size="1" maxlength="3" />
+											<!--<input ng-model="product.shopping_cart.amount" style="border:1px solid #aaa;" type="text" size="1" maxlength="1" disabled/>-->
+											<span >{{product.shopping_cart.amount}}</span>
 											<span class="am-icon-plus-circle am-icon-sm" ng-click = "increaseAmount(product.prices[0].real_price, product.shopping_cart);$event.stopPropagation();"></span>
 										</div>
 									</div>
