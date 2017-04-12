@@ -1,17 +1,30 @@
-<div class = "">
+<div class = "product-detail">
 	<div class = "am-animation-slide-right" >
 		<div>
 		<!--图片轮播-->
 		<div ng-show="productDetails.category_id!==3" am-swiper-plug options = "slideFruitData" type = "typeName"> </div>
 		<!--名称及价钱详细介绍-->
 		<div ng-show="productDetails.category_id!==3" class="am-u-sm-12 det-details">
-			<div class="am-u-sm-10">{{productDetails.description}} {{productDetails.detail}}</div>
-			<!--长度不变 在跳跃-->
-			<div ng-show="productDetails.category_id!==3" class="am-u-sm-12 det-value"> {{price_select.real_price}}元/{{units[price_select.unit].name}}
-				<span class="det-lastname"> 市场价：</span>
-				<span class="det-lastValue"> {{price_select.price}}元/{{units[price_select.unit].name}}</span>
+			<!--<div class="am-u-sm-10">{{productDetails.description}} {{productDetails.detail}}</div>-->
+			<div class="am-u-sm-12" style="margin-bottom: 5px;">
+				<span class="title-text">{{productDetails.name}}</span>
 			</div>
-			
+
+			<div ng-show="productDetails.category_id!==3" class="am-u-sm-12">
+				<div class="prod-price">
+					<!--{{price_select.real_price}}元/{{units[price_select.unit].name}}-->
+					<span class="detail-price">￥</span>
+					<span class="yang-pic-price">
+						<span class="big-price">35.</span>
+						<span class="small-price">90</span>
+						<span class="detail-unit">元/{{units[price_select.unit].name}}</span>
+					</span>
+				</div>
+				<div class="detail-high-price">
+					<span class="det-lastname">市场价:</span>
+					<span class="det-lastValue">￥{{price_select.price}}元/{{units[price_select.unit].name}}</span>
+				</div>
+			</div>
 		</div>
 		<div ng-show="productDetails.property===3" class="am-u-sm-12 ">
 			<div class="am-u-sm-4 am-vertical-align am-circle circle yg" >
@@ -50,26 +63,33 @@
 			</ul>
 		</div>
 		<div ng-show="productDetails.category_id!==3"  class="am-u-sm-12 det-value">
-			<ul class="sku">
+			<ul class="sku" style="padding-left:10px">
 				<li ng-show="productDetails.category_id===1">
-					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">订购方式:<a style="color:#f6325b;margin-left:15px;"></a></dt>
+					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">订购方式:<a style="color:#f6325b;margin-left:10px;"></a></dt>
 					<dd class="sku-item" >
 						<span data-key="0" ng-repeat="price in productDetails.prices track by $index" class="select {{price_select.id==price.id?'ed':''}}" ng-click="selectPrice(price)">按{{units[price.unit].name}}数</span>
-					 
 					</dd>
 					</dl>
 				</li>
 				<li >
-					<dl><dt style="font-size:12px;color:#333;padding-bottom:5px">订购数量:<a style="color:#f6325b;margin-left:15px;"></a></dt>
+					<dl><dt style="font-size:15px;color:#333;padding-bottom:5px;">订购数量:<a style="color:#f6325b;margin-left:15px;"></a></dt>
 					<dd class="sku-item"  >
-							<div class="am-btn-group am-btn-group-xs proLi-goodsNum" style="float: left; */">
-						 
-							<span  class="numselect" ng-click = "reduce()">-</span>
-							<span class="numselect">{{productDetails.number}}</span>
-							<span>{{units[price_select.unit].name}}</span>
-							<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>
-							<span class="numselect" ng-click = "increase()">+</span>
-							</div>
+							<!--<div class="am-btn-group am-btn-group-xs proLi-goodsNum" style="float: left; */">-->
+
+							<!--<span  class="numselect" ng-click = "reduce()">-</span>-->
+							<!--<span class="numselect">{{productDetails.number}}</span>-->
+							<!--<span>{{units[price_select.unit].name}}</span>-->
+							<!--<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>-->
+							<!--<span class="numselect" ng-click = "increase()">+</span>-->
+							<!--</div>-->
+						<div class="am-btn-group am-btn-group-xs proLi-goodsNum">
+							<!--<span ng-click = "p.changStatus();getAllPrice()" >数量</span>-->
+							<!--<span ng-if = "p.productEdit" ng-click = "p.reduce();getAllPrice()">-</span>-->
+							<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduceAmount(p);getAllPrice()"></span>
+							<span >12{{p.amount}}{{units[p.price.unit].name}}</span>
+							<!--<span ng-if = "p.productEdit" ng-click = "p.increase();getAllPrice()">+</span>-->
+							<span class="am-icon-plus-circle am-icon-sm" ng-click = "increaseAmount(p);getAllPrice()"></span>
+						</div>
 					</dd>
 					</dl>
 				</li>

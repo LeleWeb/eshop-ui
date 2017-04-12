@@ -644,6 +644,64 @@ enter*/
 .computes_list{ margin:10px }
 .search_box{ margin-top: 10px; border-bottom: 10px; }
 
+/* 20170412 添加商品详情页样式 */
+.product-detail .title-text {
+    font-size: 16px;
+    color: #232326;
+    line-height: 20px;
+}
+
+.product-detail .prod-price {
+    font-size: 23px;
+    font-family: 'Helvetica';
+    color: #f23030;
+    font-weight: bold;
+    line-height: 23px;
+    /*float: left;*/
+    margin-top: 7px;
+    margin-right: 6px;
+    position:relative;
+}
+
+.product-detail .prod-price .detail-price {
+    font-size: 18px;
+    color: red;
+    position:absolute;
+    left:0px;
+}
+
+.product-detail .yang-pic-price {
+    display: block;
+    /*float: left;*/
+    margin-left: 3px;
+    line-height: 23px;
+    position:absolute;
+    left:15px;
+}
+
+.product-detail .detail-high-price{
+    position:absolute;
+    right:80px;
+    top:10px;
+}
+
+.product-detail .yang-pic-price .big-price {
+    display: inline-block;
+    font-size: 23px;
+    line-height: 23px;
+}
+
+.product-detail .yang-pic-price .small-price {
+    display: inline-block;
+    font-size: 17px;
+    line-height: 17px;
+}
+
+.product-detail .yang-pic-price .detail-unit {
+    font-size: 15px;
+    color: black;
+}
+
 /*brands*/
 .am-g{ margin: 0px;  }
 .bra-braName{background-color:#423e3f;padding: 2px 0px; color: #ffffff; position: fixed; z-index: 999; font-size: 24px;  width: 100% }
