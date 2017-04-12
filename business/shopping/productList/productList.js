@@ -75,14 +75,11 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 		}
 
 		$scope.deleteProductNumber = function(num){
-			
 			shopInc.deleteProductNumber({headers:$scope.users.setheaders},num).then(function(data){
-				//console.log(data,"deletesucce.....")
 				init();
 			},function(){
 
 			});
-
 		}
 		$scope.gotoLogon = function(){
 			$state.go("logon");
@@ -93,7 +90,7 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 		};
 
 		$scope.reduceAmount = function(shopping_cart){
-			if(shopping_cart.amount > 0){
+			if(shopping_cart.amount > 1){
 				amount = shopping_cart.amount - 1;
 
 				// 调用服务端接口，修改购物车商品数量
@@ -111,6 +108,8 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 							$scope.modalObjErr.hideDialog();
 						},1000)
 					});
+			}else if(shopping_cart.amount == 1){
+				$scope.deleteProductNumber(shopping_cart.id)
 			}
 
 			if($rootScope.shopListNum.num > 0){
