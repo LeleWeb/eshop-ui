@@ -149,7 +149,7 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 				// alert(JSON.stringify(data.data));
 				//console.log(data,"getAllOrderList....")
 				var pdtList= data.data.carts;
-				var cartsAmout = data.data.total_count;
+				var cartsAmout = 0;
 
 				for(var i=0;i<pdtList.length;i++){
 					var p=pdtList[i];
@@ -165,11 +165,13 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 						p.price.real_price_n=real_price;
 						p.amount_n=1;
 					}
+
+					// 计算购物车总商品数量
+					cartsAmout += pdtList[i].amount;
 				}
 				$scope.pdtList=pdtList;
 
 				//$scope.shopListNum.num = $scope.pdtList.length;
-				// 计算总
 				$rootScope.shopListNum.num = cartsAmout;
 
 				$scope.isSelALL=true;
