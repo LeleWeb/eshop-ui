@@ -79,9 +79,9 @@
 							<!--<span class="numselect" ng-click = "increase()">+</span>-->
 							<!--</div>-->
 						<span class="part-note-msg">已选</span>
-						<span class="small-price">{{productDetails.number}}</span>
-						<span class="detail-unit">{{units[price_select.unit].name}}</span>
-						<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>
+						<span class="" style="font-size: 17px;margin: 0px 0px 0px 10px;color:red">{{productDetails.number}}</span>
+						<span class="" style="font-size: 17px;color:red">{{units[price_select.unit].name}}</span>
+						<span style="margin-left: 5px;">约&nbsp;{{(productDetails.number*price_select.display_quantity).toFixed(2)}}&nbsp;{{units[price_select.display_unit].name}}</span>
 						<div ng-if="!(productDetails.shopping_cart != undefined && productDetails.shopping_cart.amount > 0)" class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(productDetails);$event.stopPropagation();">
 							<div class="icon_wrap">加入购物车</div>
 						</div>
@@ -153,12 +153,11 @@
 		<!--<div class="am-cf"></div>-->
 		<!--商品详情-->
 		<div ng-show="productDetails.category_id != 3">
-			<div>
-				<div class="am-u-sm-12 am-vertical-align" style= "height:46px;background-color:#aaaaaa;text-align:center">
-					<span class="am-vertical-align-middle" >商品详情</span>
-				</div>
-
-			</div>
+			<!--<div>-->
+				<!--<div class="am-u-sm-12 am-vertical-align" style= "height:46px;background-color:#aaaaaa;text-align:center">-->
+					<!--<span class="am-vertical-align-middle" >商品详情</span>-->
+				<!--</div>-->
+			<!--</div>-->
 
 			<div class="am-u-sm-12 det-productIntro">
 				<ul>

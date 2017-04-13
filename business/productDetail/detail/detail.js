@@ -37,8 +37,7 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 			headers:$scope.users.setheaders
 		}
 		$scope.computes  = function(){
-			
-			$scope.modalObj.showDialog();	
+			$scope.modalObj.showDialog();
 			pdtIns.computes($scope.users.setheaders,{number:$scope.productDetails.number-0,money:$scope.productDetails.money-0}).then(function(data){
 				$scope.modalObj.hideDialog();
 				$scope.productDetails.plans=data.data;
