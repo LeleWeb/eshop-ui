@@ -5,7 +5,6 @@
 		<div ng-show="productDetails.category_id!==3" am-swiper-plug options = "slideFruitData" type = "typeName"> </div>
 		<!--名称及价钱详细介绍-->
 		<div ng-show="productDetails.category_id!==3" class="am-u-sm-12 det-details">
-			<!--<div class="am-u-sm-10">{{productDetails.description}} {{productDetails.detail}}</div>-->
 			<div class="am-u-sm-12" style="margin-bottom: 5px;">
 				<span class="title-text">{{productDetails.name}}</span>
 			</div>
@@ -79,13 +78,17 @@
 							<!--<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>-->
 							<!--<span class="numselect" ng-click = "increase()">+</span>-->
 							<!--</div>-->
-						<div class="am-btn-group am-btn-group-xs proLi-goodsNum">
+						<span class="part-note-msg">已选</span>
+						<span class="small-price">{{productDetails.number}}</span>
+						<span class="detail-unit">{{units[price_select.unit].name}}</span>
+						<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>
+						<div class="am-btn-group am-btn-group-xs proLi-goodsNum" >
 							<!--<span ng-click = "p.changStatus();getAllPrice()" >数量</span>-->
 							<!--<span ng-if = "p.productEdit" ng-click = "p.reduce();getAllPrice()">-</span>-->
-							<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduceAmount(p);getAllPrice()"></span>
-							<span >12{{p.amount}}{{units[p.price.unit].name}}</span>
+							<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduce();"></span>
+							<span >{{productDetails.number}}</span>
 							<!--<span ng-if = "p.productEdit" ng-click = "p.increase();getAllPrice()">+</span>-->
-							<span class="am-icon-plus-circle am-icon-sm" ng-click = "increaseAmount(p);getAllPrice()"></span>
+							<span class="am-icon-plus-circle am-icon-sm" ng-click = "increase();"></span>
 						</div>
 					</dd>
 					</dl>

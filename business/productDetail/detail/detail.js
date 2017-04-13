@@ -191,7 +191,57 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 		// display in html
 		$scope.productDetails ={};
 		function init(){
-			pdtIns.getDataforHome(productId).then(function(data){
+			//pdtIns.getDataforHome(productId).then(function(data){
+			//	$(".loading").hide();
+			//	var productDetails = data.data;
+			//	//顶部轮播图片
+			//	$scope.slideFruitData = productDetails.pictures[1];
+			//	// 2017.03.28 添加果切分类商品，除团队套餐外，其他都显示价格。
+			//	if(productDetails.category_id != 3){
+			//		var prices=productDetails.prices;
+			//		var index=0;
+			//		for(var i in prices){
+			//			if(prices[i].is_default){
+			//				index=i;
+			//			}
+			//		}
+			//		var defaultprice=prices[index];
+			//		var temp=prices[0];
+			//		prices[0]=defaultprice;
+			//		prices[index]=temp;
+			//		prices[0].is_default=true;
+			//		$scope.price_select=prices[0];
+			//		productDetails.number=1;
+			//	}else if(productDetails.category_id===3){
+            //
+			//		productDetails.number=10;
+			//		productDetails.money=100;
+			//		productDetails.plans=[];
+			//	}else{
+			//		console.log("error invalid product detail category!");
+			//		alert("我们出现了一些错误");
+			//	};
+            //
+			//	if(productDetails.property===3){
+            //
+			//		if(productDetails.group_buying&&productDetails.group_buying.end_time){
+			//			var end_time= new Date(productDetails.group_buying.end_time);
+			//			var now = new Date();
+			//			var timeLimits=end_time-now;
+			//			if(timeLimits<0){
+			//				productDetails.group_buying.end_day=0;
+			//			}else{
+			//				productDetails.group_buying.end_day=Math.ceil(timeLimits/(1000*60*60*24));
+			//			}
+			//		}
+			//	}
+			//	$scope.productDetails=productDetails;
+            //
+			//},function(err){
+			//	console.log("error....");
+			//});
+
+			pdtIns.getProduct({customer:$scope.users.owner_id}, productId).then(function(data){
 				$(".loading").hide();
 				var productDetails = data.data;
 				//顶部轮播图片
@@ -211,7 +261,13 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 					prices[index]=temp;
 					prices[0].is_default=true;
 					$scope.price_select=prices[0];
-					productDetails.number=1;
+
+					// 20170413 商品详情页加减商品数量是调用接口修改服务端购物车项的数量
+					if(productDetails.shopping_cart != null){
+						productDetails.number=productDetails.shopping_cart.amount;
+					}else{
+						productDetails.number=1;
+					}
 				}else if(productDetails.category_id===3){
 
 					productDetails.number=10;
@@ -223,7 +279,6 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 				};
 
 				if(productDetails.property===3){
-					
 					if(productDetails.group_buying&&productDetails.group_buying.end_time){
 						var end_time= new Date(productDetails.group_buying.end_time);
 						var now = new Date();
@@ -236,12 +291,91 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 					}
 				}
 				$scope.productDetails=productDetails;
-	
 			},function(err){
 				console.log("error....");
 			});
-
 		}
+
+		//$scope.reduceAmount = function(product){
+		//	if(product.number > 1){
+		//		// 新建购物车项
+		//		amount = product.shopping_cart.amount - 1;
+        //
+		//		// 调用服务端接口，修改购物车商品数量
+		//		pdtIns.updateShoppingCartAccount($scope.addTobagData,
+		//			shopping_cart.id,
+		//			{cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}}).then(function(data){
+		//				// 用新建的购物车项对象，刷新商品的购物车属性。
+		//				var cart = data.data;
+		//				shopping_cart.amount = cart.amount;
+		//				shopping_cart.total_price = cart.total_price;
+		//			},function(err){
+		//				$scope.modalObj.hideDialog();
+		//				$scope.modalObjErr.showDialogdwhite()
+		//				setTimeout(function(){
+		//					$scope.modalObjErr.hideDialog();
+		//				},1000)
+		//			});
+		//	}
+		//	//if(shopping_cart.amount > 1){
+		//	//	amount = shopping_cart.amount - 1;
+         //   //
+		//	//	// 调用服务端接口，修改购物车商品数量
+		//	//	pdtIns.updateShoppingCartAccount($scope.addTobagData,
+		//	//		shopping_cart.id,
+		//	//		{cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}}).then(function(data){
+		//	//			// 用新建的购物车项对象，刷新商品的购物车属性。
+		//	//			var cart = data.data;
+		//	//			shopping_cart.amount = cart.amount;
+		//	//			shopping_cart.total_price = cart.total_price;
+		//	//		},function(err){
+		//	//			$scope.modalObj.hideDialog();
+		//	//			$scope.modalObjErr.showDialogdwhite()
+		//	//			setTimeout(function(){
+		//	//				$scope.modalObjErr.hideDialog();
+		//	//			},1000)
+		//	//		});
+		//	//}else if(shopping_cart.amount == 1){
+		//	//	$scope.deleteProductNumber(shopping_cart.id)
+		//	//}
+        //
+		//	if(product.number > 0){
+		//		product.number--;
+		//	}
+        //
+		//	if($rootScope.shopListNum.num > 0){
+		//		$rootScope.shopListNum.num--;
+		//	}
+		//};
+
+		//$scope.increaseAmount = function(product){
+		//	if(product.shopping_cart == null && product.number == 1){
+		//		// 新建购物车项
+        //
+		//	}else{
+		//		// 修改购物车项数量
+		//		amount = shopping_cart.amount + 1;
+        //
+		//		// 调用服务端接口，修改购物车商品数量
+		//		var params = {cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}};
+		//		pdtIns.updateShoppingCartAccount($scope.addTobagData, shopping_cart.id, params).then(function(data){
+		//			// 用新建的购物车项对象，刷新商品的购物车属性。
+		//			var cart = data.data;
+		//			shopping_cart.amount = cart.amount;
+		//			shopping_cart.total_price = cart.total_price;
+		//		},function(err){
+		//			$scope.modalObj.hideDialog();
+		//			$scope.modalObjErr.showDialogdwhite()
+		//			setTimeout(function(){
+		//				$scope.modalObjErr.hideDialog();
+		//			},1000)
+		//		});
+		//	}
+        //
+		//	product.number++;
+		//	$rootScope.shopListNum.num++;
+		//};
+
 		init();
 		$scope.reduce = function(){
 			if($scope.productDetails.number>1){

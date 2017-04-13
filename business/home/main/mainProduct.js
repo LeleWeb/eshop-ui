@@ -1,7 +1,11 @@
-define(["amaze","framework/services/homeService","framework/services/productService"],function (amaze,homePage,pdt){
+define(["amaze",
+		"framework/services/homeService",
+		"framework/services/productService",
+		"framework/services/shoppingService"],function (amaze,homePage,pdt,shopList){
 	var ctrl = ["$scope","$state","$stateParams","$http","$q","$rootScope","$interval",function($scope,$state, $stateParams,$http,$q,$rootScope,$interval){
 		var homePageIns = new homePage($q);
 		var pdtIns = new pdt($q);
+		var shopInc = new shopList($q);
 
 		$scope.modalObj = {
 			content:"",
@@ -162,7 +166,7 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 		};
 
 		$scope.reduceAmount = function(price, shopping_cart){
-			if(shopping_cart.amount > 0){
+			if(shopping_cart.amount > 1){
 				amount = shopping_cart.amount - 1;
 
 				// 调用服务端接口，修改购物车商品数量
@@ -180,6 +184,9 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 						$scope.modalObjErr.hideDialog();
 					},1000)
 				});
+			}else{
+				$scope.deleteProductCart(shopping_cart.id);
+				shopping_cart.amount = 0;
 			}
 
 			if($rootScope.shopListNum.num > 0){
@@ -208,6 +215,12 @@ define(["amaze","framework/services/homeService","framework/services/productServ
 
 			$rootScope.shopListNum.num++;
 		};
+
+		$scope.deleteProductCart = function(cartId){
+			shopInc.deleteProductNumber({headers:$scope.users.setheaders},cartId).then(function(data){
+			},function(){
+			});
+		}
 		
 		function init(){
 			var query={};

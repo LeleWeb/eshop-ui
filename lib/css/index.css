@@ -546,6 +546,9 @@ span.normal-price{
 .proLi-noEnter{  margin-top: 40%;  }
 .proLi-noEnter button{  margin-top: 10px;  }
 .proLi-details{margin: 0 5%}
+.part-note-msg {
+    line-height: 18px;
+}
 
 /*payment*/
 .paym-address{  padding-left: 10px;  line-height: 50px;     }

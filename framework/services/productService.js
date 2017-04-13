@@ -10,6 +10,28 @@ define(["angular","framework/http"],function(angular,https){
 			method:"get"
 		});
 	}
+	// 请求单个商品
+	pdtRequest.prototype.getProduct = function(queryParams, productId){
+		// url查询参数格式化
+		var urlStr = "";
+		var paramsStr = "";
+		for(var i in queryParams){
+			//if (queryParams.hasOwnProperty(i)) { //filter,只输出man的私有属性
+				paramsStr += "&" + i + "=" + queryParams[i];
+			//};
+		}
+
+		if(paramsStr !== ""){
+			urlStr = "/api/v1/accounts/1/stores/1/products/" + productId + "?" + paramsStr;
+		}else{
+			urlStr = "/api/v1/accounts/1/stores/1/products/" + productId;
+		}
+
+		return this.doRequest({
+			url:urlStr,
+			method:"get"
+		});
+	}
 	pdtRequest.prototype.computes = function(headers,data){
 		
 		var postData={
