@@ -82,13 +82,16 @@
 						<span class="small-price">{{productDetails.number}}</span>
 						<span class="detail-unit">{{units[price_select.unit].name}}</span>
 						<span>约{{(productDetails.number*price_select.display_quantity).toFixed(2)}}{{units[price_select.display_unit].name}}</span>
-						<div class="am-btn-group am-btn-group-xs proLi-goodsNum" >
+						<div ng-if="!(productDetails.shopping_cart != undefined && productDetails.shopping_cart.amount > 0)" class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(productDetails);$event.stopPropagation();">
+							<div class="icon_wrap">加入购物车</div>
+						</div>
+						<div ng-if="productDetails.shopping_cart != undefined && productDetails.shopping_cart.amount > 0" class="am-btn-group am-btn-group-xs proLi-goodsNum" >
 							<!--<span ng-click = "p.changStatus();getAllPrice()" >数量</span>-->
 							<!--<span ng-if = "p.productEdit" ng-click = "p.reduce();getAllPrice()">-</span>-->
-							<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduce();"></span>
+							<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduceAmount(price_select.real_price, productDetails);"></span>
 							<span >{{productDetails.number}}</span>
 							<!--<span ng-if = "p.productEdit" ng-click = "p.increase();getAllPrice()">+</span>-->
-							<span class="am-icon-plus-circle am-icon-sm" ng-click = "increase();"></span>
+							<span class="am-icon-plus-circle am-icon-sm" ng-click = "increaseAmount(price_select.real_price, productDetails);"></span>
 						</div>
 					</dd>
 					</dl>
@@ -182,10 +185,9 @@
 				<div  ng-show="shopListNum.num>0" class="menuGoodsNum" style="left: 63%;bottom: 60%;" ng-bind = "shopListNum.num"></div>
 				
 			</div>
-			<div class="am-u-sm-4 am-vertical-align" style= "height:50px;margin-bottom: 0px;background-color:#FF9500;color:white;text-align:center">
+			<div ng-show="productDetails.category_id == 3" class="am-u-sm-4 am-vertical-align" style= "height:50px;margin-bottom: 0px;background-color:#FF9500;color:white;text-align:center">
 				<span class="am-vertical-align-middle "ng-click = "addToBag()">加入购物车</span>
 			</div>
-
 			<div class="am-u-sm-4 am-vertical-align am-fr" style= "height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
 				<span class="am-vertical-align-middle" ng-click = "gotoShopList()">立即购买</span>
 			</div>

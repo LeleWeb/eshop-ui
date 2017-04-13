@@ -1,4 +1,4 @@
-define(["amaze","framework/services/productService"],function (amaze,pdt){
+define(["amaze","framework/services/productService", "framework/services/shoppingService"],function (amaze,pdt,shopList){
 
 	var ctrl = ["$scope","$state","$stateParams","$http","$q","orderList", "$rootScope", function($scope,$state, $stateParams,$http,$q,orderList, $rootScope){
 
@@ -6,6 +6,7 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 		$scope.slideFruitData = []
 		var productId = $stateParams.productId;
 		var pdtIns = new pdt($q);
+		var shopInc = new shopList($q);
 
 		$scope.modalObj = {
 			content:"",
@@ -124,23 +125,25 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 			
 			return cart;
 		}
-		$scope.addToBag  = function(){
 
+		$scope.addToBag = function(product){
 			if (!$scope.users.owner_id) {
 				alert("请先登录");
 				return;
 			}
-			// add function 
+			// add function
 			$scope.modalObj.showDialog();
 
 			pdtIns.addTobagList($scope.addTobagData,{cart:$scope.buildCarts()}).then(function(data){
-			// code = -1  auth failed
+				// code = -1  auth failed
 				// alert(JSON.stringify(data));
 				$scope.modalObj.hideDialog();
 				$scope.modalObjSuc.showDialogdwhite();
 				setTimeout(function(){
 					$scope.modalObjSuc.hideDialog();
 				},2000)
+
+				product.shopping_cart = data.data;
 
 				//$scope.shopListNum.num++;
 				$rootScope.shopListNum.num++;
@@ -150,9 +153,7 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 				setTimeout(function(){
 					$scope.modalObjErr.hideDialog();
 				},2000)
-
 			})
-
 		}
 
 		$scope.gotoShopList = function(){
@@ -296,85 +297,66 @@ define(["amaze","framework/services/productService"],function (amaze,pdt){
 			});
 		}
 
-		//$scope.reduceAmount = function(product){
-		//	if(product.number > 1){
-		//		// 新建购物车项
-		//		amount = product.shopping_cart.amount - 1;
-        //
-		//		// 调用服务端接口，修改购物车商品数量
-		//		pdtIns.updateShoppingCartAccount($scope.addTobagData,
-		//			shopping_cart.id,
-		//			{cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}}).then(function(data){
-		//				// 用新建的购物车项对象，刷新商品的购物车属性。
-		//				var cart = data.data;
-		//				shopping_cart.amount = cart.amount;
-		//				shopping_cart.total_price = cart.total_price;
-		//			},function(err){
-		//				$scope.modalObj.hideDialog();
-		//				$scope.modalObjErr.showDialogdwhite()
-		//				setTimeout(function(){
-		//					$scope.modalObjErr.hideDialog();
-		//				},1000)
-		//			});
-		//	}
-		//	//if(shopping_cart.amount > 1){
-		//	//	amount = shopping_cart.amount - 1;
-         //   //
-		//	//	// 调用服务端接口，修改购物车商品数量
-		//	//	pdtIns.updateShoppingCartAccount($scope.addTobagData,
-		//	//		shopping_cart.id,
-		//	//		{cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}}).then(function(data){
-		//	//			// 用新建的购物车项对象，刷新商品的购物车属性。
-		//	//			var cart = data.data;
-		//	//			shopping_cart.amount = cart.amount;
-		//	//			shopping_cart.total_price = cart.total_price;
-		//	//		},function(err){
-		//	//			$scope.modalObj.hideDialog();
-		//	//			$scope.modalObjErr.showDialogdwhite()
-		//	//			setTimeout(function(){
-		//	//				$scope.modalObjErr.hideDialog();
-		//	//			},1000)
-		//	//		});
-		//	//}else if(shopping_cart.amount == 1){
-		//	//	$scope.deleteProductNumber(shopping_cart.id)
-		//	//}
-        //
-		//	if(product.number > 0){
-		//		product.number--;
-		//	}
-        //
-		//	if($rootScope.shopListNum.num > 0){
-		//		$rootScope.shopListNum.num--;
-		//	}
-		//};
+		$scope.reduceAmount = function(price, product){
+			if(product.shopping_cart.amount > 1){
+				amount = product.shopping_cart.amount - 1;
 
-		//$scope.increaseAmount = function(product){
-		//	if(product.shopping_cart == null && product.number == 1){
-		//		// 新建购物车项
-        //
-		//	}else{
-		//		// 修改购物车项数量
-		//		amount = shopping_cart.amount + 1;
-        //
-		//		// 调用服务端接口，修改购物车商品数量
-		//		var params = {cart: { amount: amount, total_price: shopping_cart.price.real_price*amount}};
-		//		pdtIns.updateShoppingCartAccount($scope.addTobagData, shopping_cart.id, params).then(function(data){
-		//			// 用新建的购物车项对象，刷新商品的购物车属性。
-		//			var cart = data.data;
-		//			shopping_cart.amount = cart.amount;
-		//			shopping_cart.total_price = cart.total_price;
-		//		},function(err){
-		//			$scope.modalObj.hideDialog();
-		//			$scope.modalObjErr.showDialogdwhite()
-		//			setTimeout(function(){
-		//				$scope.modalObjErr.hideDialog();
-		//			},1000)
-		//		});
-		//	}
-        //
-		//	product.number++;
-		//	$rootScope.shopListNum.num++;
-		//};
+				// 调用服务端接口，修改购物车商品数量
+				var params = {cart: { amount: amount, total_price: price*amount}};
+				pdtIns.updateShoppingCartAccount($scope.addTobagData, product.shopping_cart.id, params).then(function(data){
+					// 用新建的购物车项对象，刷新商品的购物车属性。
+					var cart = data.data;
+					product.shopping_cart.amount = cart.amount;
+					product.shopping_cart.total_price = cart.total_price;
+				},function(err){
+					$scope.modalObj.hideDialog();
+					$scope.modalObjErr.showDialogdwhite()
+					setTimeout(function(){
+						$scope.modalObjErr.hideDialog();
+					},1000)
+				});
+			}else{
+				$scope.deleteProductCart(product.shopping_cart.id);
+				product.shopping_cart = undefined;
+				product.number = 0;
+			}
+
+			if(product.number > 0){
+				product.number--;
+			}
+
+			if($rootScope.shopListNum.num > 0){
+				$rootScope.shopListNum.num--;
+			}
+		};
+
+		$scope.increaseAmount = function(price, product){
+			amount = product.shopping_cart.amount + 1;
+
+			// 调用服务端接口，修改购物车商品数量
+			var params = {cart: { amount: amount, total_price: price*amount}};
+			pdtIns.updateShoppingCartAccount($scope.addTobagData, product.shopping_cart.id, params).then(function(data){
+				// 用新建的购物车项对象，刷新商品的购物车属性。
+				var cart = data.data;
+				product.shopping_cart.amount = cart.amount;
+				product.shopping_cart.total_price = cart.total_price;
+			},function(err){
+				$scope.modalObj.hideDialog();
+				$scope.modalObjErr.showDialogdwhite()
+				setTimeout(function(){
+					$scope.modalObjErr.hideDialog();
+				},1000)
+			});
+
+			product.number++;
+			$rootScope.shopListNum.num++;
+		};
+
+		$scope.deleteProductCart = function(cartId){
+			shopInc.deleteProductNumber({headers:$scope.users.setheaders},cartId).then(function(data){
+			},function(){
+			});
+		};
 
 		init();
 		$scope.reduce = function(){

@@ -86,10 +86,10 @@
 									<div class="pd_op_text_one">{{product.description}}</div>
 									<div class="product-list-price" style="position:absolute;bottom:0px">
 										<span class="normal-price">¥{{product.prices[0].real_price}}</span><span>/斤</span>
-										<div ng-if="!(product.shopping_cart.amount != undefined && product.shopping_cart.amount > 0)" class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(product);$event.stopPropagation();">
+										<div ng-if="!(product.shopping_cart != undefined && product.shopping_cart.amount > 0)" class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(product);$event.stopPropagation();">
 											<div class="icon_wrap">加入购物车</div>
 										</div>
-										<div ng-if="product.shopping_cart.amount != undefined && product.shopping_cart.amount > 0" class="am-btn-group am-btn-group-xs proLi-goodsNum">
+										<div ng-if="product.shopping_cart != undefined && product.shopping_cart.amount > 0" class="am-btn-group am-btn-group-xs proLi-goodsNum">
 											<span class="am-icon-minus-circle am-icon-sm" ng-click = "reduceAmount(product.prices[0].real_price, product.shopping_cart);$event.stopPropagation();"></span>
 											<!--<input ng-model="product.shopping_cart.amount" style="border:1px solid #aaa;" type="text" size="1" maxlength="1" disabled/>-->
 											<span >{{product.shopping_cart.amount}}</span>

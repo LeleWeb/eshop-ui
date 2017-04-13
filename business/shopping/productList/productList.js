@@ -101,6 +101,9 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 						var cart = data.data;
 						shopping_cart.amount = cart.amount;
 						shopping_cart.total_price = cart.total_price;
+
+						// 刷新总价
+						$scope.getAllPrice();
 					},function(err){
 						$scope.modalObj.hideDialog();
 						$scope.modalObjErr.showDialogdwhite()
@@ -108,12 +111,10 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 							$scope.modalObjErr.hideDialog();
 						},1000)
 					});
-			}else if(shopping_cart.amount == 1){
-				$scope.deleteProductNumber(shopping_cart.id)
-			}
 
-			if($rootScope.shopListNum.num > 0){
-				$rootScope.shopListNum.num--;
+				if($rootScope.shopListNum.num > 0){
+					$rootScope.shopListNum.num--;
+				}
 			}
 		};
 
@@ -128,6 +129,9 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 					var cart = data.data;
 					shopping_cart.amount = cart.amount;
 					shopping_cart.total_price = cart.total_price;
+
+					// 刷新总价
+					$scope.getAllPrice();
 				},function(err){
 					$scope.modalObj.hideDialog();
 					$scope.modalObjErr.showDialogdwhite()
@@ -145,6 +149,8 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 				// alert(JSON.stringify(data.data));
 				//console.log(data,"getAllOrderList....")
 				var pdtList= data.data.carts;
+				var cartsAmout = data.data.total_count;
+
 				for(var i=0;i<pdtList.length;i++){
 					var p=pdtList[i];
 					//$scope.pdtList[i].price.real_price * $scope.pdtList[i].amount
@@ -161,8 +167,11 @@ define(["amaze","framework/services/shoppingService", "framework/services/produc
 					}
 				}
 				$scope.pdtList=pdtList;
+
 				//$scope.shopListNum.num = $scope.pdtList.length;
-				//$rootScope.shopListNum.num = $scope.pdtList.length;
+				// 计算总
+				$rootScope.shopListNum.num = cartsAmout;
+
 				$scope.isSelALL=true;
 				$scope.isAllPrice($scope.isSelALL);
 				// alert($scope.shopListNum.num)
