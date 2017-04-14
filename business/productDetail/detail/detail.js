@@ -130,6 +130,9 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 				alert("请先登录");
 				return;
 			}
+
+			product.number += 1;
+
 			// add function
 			$scope.modalObj.showDialog();
 
@@ -140,7 +143,7 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 				$scope.modalObjSuc.showDialogdwhite();
 				setTimeout(function(){
 					$scope.modalObjSuc.hideDialog();
-				},2000)
+				},500)
 
 				product.shopping_cart = data.data;
 

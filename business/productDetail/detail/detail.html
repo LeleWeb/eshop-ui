@@ -79,7 +79,7 @@
 							<!--<span class="numselect" ng-click = "increase()">+</span>-->
 							<!--</div>-->
 						<span class="part-note-msg">已选</span>
-						<span class="" style="font-size: 17px;margin: 0px 0px 0px 10px;color:red">{{productDetails.number-1}}</span>
+						<span class="" style="font-size: 17px;margin: 0px 0px 0px 10px;color:red">{{productDetails.number}}</span>
 						<span class="" style="font-size: 17px;color:red">{{units[price_select.unit].name}}</span>
 						<span style="margin-left: 5px;">约&nbsp;{{(productDetails.number*price_select.display_quantity).toFixed(2)}}&nbsp;{{units[price_select.display_unit].name}}</span>
 						<div ng-if="!(productDetails.shopping_cart != undefined && productDetails.shopping_cart.amount > 0)" class="buy_car" style="background:#f02b2b;color:#FFFFFF" ng-click="addToBag(productDetails);$event.stopPropagation();">
