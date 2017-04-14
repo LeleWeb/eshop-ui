@@ -158,7 +158,7 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 			})
 		}
 
-		$scope.gotoShopList = function(){
+		$scope.gotoShopList = function(product){
 			if (!$scope.users.owner_id) {
 				alert("请先登录");
 				return;
@@ -166,26 +166,36 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 			// add function 
 			//$scope.modalObj.showDialog();
 
-			pdtIns.addTobagList($scope.addTobagData,{cart:$scope.buildCarts()}).then(function(data){
-				
-				$scope.modalObj.hideDialog();
-				$scope.modalObjSuc.showDialogdwhite();
+			if(product.number == 0){
+				product.number += 1;
+			}
 
-				//$scope.shopListNum.num++;
-				$rootScope.shopListNum.num++;
+			// 如果是团队套餐商品，则先创建购物车项，再跳转支付页面; 如果是除团队套餐之外的其他商品,则直接支付.
+			if(product.shopping_cart === null || product.shopping_cart === undefined){
+				pdtIns.addTobagList($scope.addTobagData,{cart:$scope.buildCarts()}).then(function(data){
 
-				orderList.allPrice = data.data.total_price;
-				orderList.setList([data.data]);
+					$scope.modalObj.hideDialog();
+					$scope.modalObjSuc.showDialogdwhite();
+
+					//$scope.shopListNum.num++;
+					$rootScope.shopListNum.num++;
+
+					orderList.allPrice = data.data.total_price;
+					orderList.setList([data.data]);
+					$state.go("payment.pay");
+				},function(err){
+					$scope.modalObj.hideDialog();
+					$scope.modalObjErr.showDialogdwhite()
+					setTimeout(function(){
+						$scope.modalObjErr.hideDialog();
+					})
+
+				});
+			}else{
+				orderList.allPrice = product.shopping_cart.total_price;
+				orderList.setList([product.shopping_cart]);
 				$state.go("payment.pay");
-			},function(err){
-				$scope.modalObj.hideDialog();
-				$scope.modalObjErr.showDialogdwhite()
-				setTimeout(function(){
-					$scope.modalObjErr.hideDialog();
-				})
-
-			})
-			
+			}
 		}
 		$scope.selectPrice = function(price_select){
 			$scope.price_select=price_select;
@@ -269,7 +279,7 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 					if(productDetails.shopping_cart != null){
 						productDetails.number=productDetails.shopping_cart.amount;
 					}else{
-						productDetails.number=1;
+						productDetails.number=0;
 					}
 				}else if(productDetails.category_id===3){
 

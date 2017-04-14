@@ -181,14 +181,13 @@
 			<div ui-sref = "productList" class="am-u-sm-2 am-vertical-align" style= "height:50px;margin-bottom: 0px;text-align:center;background-color:white;">
 				<span class="am-icon-cart-plus am-icon-md"></span>
 				<span class="am-vertical-align-middle ">购物车</span>
-				<div  ng-show="shopListNum.num>0" class="menuGoodsNum" style="left: 63%;bottom: 60%;" ng-bind = "shopListNum.num"></div>
-				
+				<div ng-show="shopListNum.num>0" class="menuGoodsNum" style="left: 63%;bottom: 60%;" ng-bind = "shopListNum.num"></div>
 			</div>
 			<div ng-show="productDetails.category_id == 3" class="am-u-sm-4 am-vertical-align" style= "height:50px;margin-bottom: 0px;background-color:#FF9500;color:white;text-align:center">
 				<span class="am-vertical-align-middle "ng-click = "addToBag()">加入购物车</span>
 			</div>
-			<div class="am-u-sm-4 am-vertical-align am-fr" style= "height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
-				<span class="am-vertical-align-middle" ng-click = "gotoShopList()">立即购买</span>
+			<div class="am-u-sm-4 am-vertical-align am-fr" style= "float:right;height:50px;margin-bottom: 0px;background-color:#DD2727;color:white;text-align:center">
+				<span class="am-vertical-align-middle" ng-click = "gotoShopList(productDetails)">立即购买</span>
 			</div>
 		</div>
 	</div>
