@@ -105,9 +105,6 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 						cart.subitems.push(subitem);
 					}	
 				}
-				
-				
-				
 			}else{
 				var cart={
 					"product_id": $scope.productDetails.id,
@@ -131,7 +128,9 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 				return;
 			}
 
-			product.number += 1;
+			if(product.category_id !== 3){
+				product.number += 1;
+			}
 
 			// add function
 			$scope.modalObj.showDialog();
@@ -166,8 +165,10 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 			// add function 
 			//$scope.modalObj.showDialog();
 
-			if(product.number == 0){
-				product.number += 1;
+			if(product.category_id !== 3){
+				if(product.number == 0){
+					product.number += 1;
+				}
 			}
 
 			// 如果是团队套餐商品，则先创建购物车项，再跳转支付页面; 如果是除团队套餐之外的其他商品,则直接支付.
@@ -180,8 +181,23 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 					//$scope.shopListNum.num++;
 					$rootScope.shopListNum.num++;
 
-					orderList.allPrice = data.data.total_price;
-					orderList.setList([data.data]);
+					if(product.category_id !== 3){
+						orderList.allPrice = data.data.total_price;
+						orderList.setList([data.data]);
+					}else{
+						var p = data.data;
+						// 计算总价
+						if(p.subitems.length>0){
+							var total_price = p.total_price;
+							for(var j=0;j<p.subitems.length;j++){
+								var ps=p.subitems[j];
+								total_price += ps.total_price;
+							}
+							orderList.allPrice = total_price;
+							orderList.setList([p]);
+						}
+					}
+
 					$state.go("payment.pay");
 				},function(err){
 					$scope.modalObj.hideDialog();
@@ -192,11 +208,27 @@ define(["amaze","framework/services/productService", "framework/services/shoppin
 
 				});
 			}else{
-				orderList.allPrice = product.shopping_cart.total_price;
-				orderList.setList([product.shopping_cart]);
+				if(product.category_id !== 3){
+					orderList.allPrice = product.shopping_cart.total_price;
+					orderList.setList([product.shopping_cart]);
+				}else{
+					var p = product.shopping_cart;
+					// 计算总价
+					if(p.subitems.length>0){
+						var total_price = p.total_price;
+						for(var j=0;j<p.subitems.length;j++){
+							var ps=p.subitems[j];
+							total_price += ps.total_price;
+						}
+						orderList.allPrice = total_price;
+						orderList.setList([p]);
+					}
+				}
+
 				$state.go("payment.pay");
 			}
-		}
+		};
+
 		$scope.selectPrice = function(price_select){
 			$scope.price_select=price_select;
 		}
